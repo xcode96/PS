@@ -700,37 +700,145 @@
                 }
             ],
             "AzureAD": [
-                {
-                    name: "Add-LocalDeviceAdmin.ps1",
-                    description: "Create Add-LocalDeviceAdmin.ps1 — Adds Azure AD user as local administrator on enrolled Windows devices.",
-                    path: "scripts/AzureAD/Add-LocalDeviceAdmin.ps1",
-                    tags: ["Device Management", "Beginner"]
-                }
-            ],
+    {
+        name: "Add-LocalDeviceAdmin.ps1",
+        description: "Create Add-LocalDeviceAdmin.ps1 — Adds Azure AD user as local administrator on enrolled Windows devices.",
+        path: "scripts/AzureAD/Add-LocalDeviceAdmin.ps1",
+        tags: ["Device Management", "Azure AD Join", "Beginner"]
+    },
+    {
+        name: "Convert-AzureADObjectIdToSid.ps1",
+        description: "Add some helpers — Converts Azure AD Object ID to SID for hybrid identity scenarios.",
+        path: "scripts/AzureAD/Convert-AzureADObjectIdToSid.ps1",
+        tags: ["Identity", "Hybrid", "Conversion"]
+    },
+    {
+        name: "Convert-AzureADSidToObjectId.ps1",
+        description: "Add some helpers — Converts SID to Azure AD Object ID for cross-forest scenarios.",
+        path: "scripts/AzureAD/Convert-AzureADSidToObjectId.ps1",
+        tags: ["Identity", "Hybrid", "Conversion"]
+    },
+    {
+        name: "Get-AzureADTeantIdForDomain.ps1",
+        description: "Get the Azure Active Directory Tenant ID for a given Domain — Useful for multi-tenant scripting.",
+        path: "scripts/AzureAD/Get-AzureADTeantIdForDomain.ps1",
+        tags: ["Tenant", "Discovery", "Lookup"]
+    },
+    {
+        name: "Get-AzureADUserDevices.ps1",
+        description: "Minor rework — Retrieves all devices registered to a specific Azure AD user.",
+        path: "scripts/AzureAD/Get-AzureADUserDevices.ps1",
+        tags: ["Device Management", "Reporting", "Audit"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for AzureAD script collection.",
+        path: "scripts/AzureAD/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "Remove-AzureADDevicesWithNoOwner.ps1",
+        description: "Create Remove-AzureADDevicesWithNoOwner.ps1 — Removes Azure AD devices that have no assigned owner.",
+        path: "scripts/AzureAD/Remove-AzureADDevicesWithNoOwner.ps1",
+        tags: ["Cleanup", "Device Management", "Automation"]
+    },
+    {
+        name: "Remove-AzureADInactiveDevices.ps1",
+        description: "Removes Azure AD devices that have been inactive for a specified period.",
+        path: "scripts/AzureAD/Remove-AzureADInactiveDevices.ps1",
+        tags: ["Cleanup", "Device Management", "Automation"]
+    }
+],
             "BGInfo": [
-                {
-                    name: "Invoke-InstallCustomBGInfo.ps1",
-                    description: "Create Invoke-InstallCustomBGInfo.ps1 — Installs and configures custom BGInfo setup.",
-                    path: "scripts/BGInfo/Invoke-InstallCustomBGInfo.ps1",
-                    tags: ["Desktop", "Beginner"]
-                }
-            ],
-            "BitLocker": [
-                {
-                    name: "Enable-BitLockerRemotely.ps1",
-                    description: "Minor rework — Enables BitLocker encryption on remote devices with logging.",
-                    path: "scripts/BitLocker/Enable-BitLockerRemotely.ps1",
-                    tags: ["Security", "Intermediate", "Requires Admin"]
-                }
-            ],
-            "Exchange": [
-                {
-                    name: "Update-AddressBooks.ps1",
-                    description: "Force an update of all Exchange Address books — Immediately refreshes GAL and OAB.",
-                    path: "scripts/Exchange/Update-AddressBooks.ps1",
-                    tags: ["Mail", "Advanced", "Requires Admin"]
-                }
-            ],
+    {
+        name: "Invoke-InstallCustomBGInfo.ps1",
+        description: "Create Invoke-InstallCustomBGInfo.ps1 — Installs and configures custom BGInfo setup on Windows machines.",
+        path: "scripts/BGInfo/Invoke-InstallCustomBGInfo.ps1",
+        tags: ["Desktop", "Customization", "Beginner"]
+    }
+],
+         "BitLocker": [
+    {
+        name: "Get-DsRegStatusInfo.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Retrieves device registration and BitLocker status from DSREGCMD.",
+        path: "scripts/BitLocker/Get-DsRegStatusInfo.ps1",
+        tags: ["Device Health", "Compliance", "Reporting"]
+    },
+    {
+        name: "Invoke-BackupBitlockerRecoveryKey.ps1",
+        description: "Minor rework — Backs up BitLocker recovery keys to Azure AD or Active Directory.",
+        path: "scripts/BitLocker/Invoke-BackupBitlockerRecoveryKey.ps1",
+        tags: ["Recovery", "Security", "Backup"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for BitLocker script collection.",
+        path: "scripts/BitLocker/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "New-BitlockerRecoveryKey.ps1",
+        description: "Generates a new BitLocker recovery key and optionally backs it up.",
+        path: "scripts/BitLocker/New-BitlockerRecoveryKey.ps1",
+        tags: ["Recovery", "Security", "Key Management"]
+    }
+],
+           "Exchange": [
+    {
+        name: "CleanupExchangeLogs.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Cleans up old Exchange server log files to free disk space.",
+        path: "scripts/Exchange/CleanupExchangeLogs.ps1",
+        tags: ["Maintenance", "Cleanup", "Log Management"]
+    },
+    {
+        name: "Clear-LogFileDirectory.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Clears specified log file directories on Exchange servers.",
+        path: "scripts/Exchange/Clear-LogFileDirectory.ps1",
+        tags: ["Maintenance", "Cleanup", "Automation"]
+    },
+    {
+        name: "Enable-ModernAuth-Exchange.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Enables Modern Authentication for Exchange Server or Hybrid.",
+        path: "scripts/Exchange/Enable-ModernAuth-Exchange.ps1",
+        tags: ["Security", "Authentication", "Hybrid"]
+    },
+    {
+        name: "Get-ADExchangeServers.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Retrieves all Exchange servers registered in Active Directory.",
+        path: "scripts/Exchange/Get-ADExchangeServers.ps1",
+        tags: ["Discovery", "Inventory", "Reporting"]
+    },
+    {
+        name: "Get-HafniumReports.ps1",
+        description: "Add Get-HafniumReports.ps1 — Scans Exchange servers for indicators of compromise related to Hafnium attack.",
+        path: "scripts/Exchange/Get-HafniumReports.ps1",
+        tags: ["Security", "Forensics", "Threat Hunting"]
+    },
+    {
+        name: "Invoke-UpdateAllExchangeAdressBooks.ps1",
+        description: "Force an update of all Exchange Address books — Immediately refreshes GAL, OAB, and offline address books.",
+        path: "scripts/Exchange/Invoke-UpdateAllExchangeAdressBooks.ps1",
+        tags: ["Mail Flow", "Address Books", "Maintenance"]
+    },
+    {
+        name: "LICENSE",
+        description: "Change Copyright year — License file for Exchange script collection.",
+        path: "scripts/Exchange/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "README.md",
+        description: "Legacy Notice: On Premises related stuff will no longer be maintained! — Documentation and usage guide.",
+        path: "scripts/Exchange/README.md",
+        tags: ["Documentation", "Legacy", "Notice"]
+    },
+    {
+        name: "Remove-AntiSpamAgents.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Removes legacy or unused Anti-Spam agents from Exchange Server.",
+        path: "scripts/Exchange/Remove-AntiSpamAgents.ps1",
+        tags: ["Security", "Cleanup", "Mail Flow"]
+    }
+],
             "ExchangeNodeMaintenanceMode": [
                 {
                     name: "Enter-MaintenanceMode.ps1",
@@ -755,14 +863,1469 @@
                     tags: ["Reporting", "Beginner", "Graph API"]
                 }
             ],
-            "Intune": [
-                {
-                    name: "Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
-                    description: "Update Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1 — Disables Defender scanning of removable drives.",
-                    path: "scripts/Intune/Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
-                    tags: ["Security", "Intermediate", "Intune"]
-                }
-            ],
+
+"Intune": [
+    {
+        name: "Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        description: "Update Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1 — Disables Defender scanning of removable drives.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        tags: ["Security", "Defender", "Remediation"]
+    },
+    {
+        name: "AllowAllNETUpdates.ps1",
+        description: "Update files from the upstream repository — Allows all .NET Framework updates.",
+        path: "scripts/Intune/ProactiveRemediations/AllowAllNETUpdates.ps1",
+        tags: [".NET", "Updates", "Detection"]
+    },
+    {
+        name: "Detection-AllowNonAdminsToManageThePublicDesktop.ps1",
+        description: "Update from the Upstream Repo — Detects if non-admins can manage Public Desktop.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AllowNonAdminsToManageThePublicDesktop.ps1",
+        tags: ["Desktop", "Policy", "Detection"]
+    },
+    {
+        name: "Detection-AllowSideLoadingForTrustedApps.ps1",
+        description: "AllowSideLoadingForTrustedApps — Detects if side-loading is allowed for trusted apps.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AllowSideLoadingForTrustedApps.ps1",
+        tags: ["Apps", "Security", "Detection"]
+    },
+    {
+        name: "Detection-AlwaysEnableMicrosoftDefenderPUAProtectionAndBlockApps.ps1",
+        description: "Update from the upstream repository — Detects PUA protection status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AlwaysEnableMicrosoftDefenderPUAProtectionAndBlockApps.ps1",
+        tags: ["Defender", "Security", "Detection"]
+    },
+    {
+        name: "Detection-AlwaysOnStoreAutomaticDownloadInstallUpdates.ps1",
+        description: "Update from the upstream repository — Detects Store auto-update settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AlwaysOnStoreAutomaticDownloadInstallUpdates.ps1",
+        tags: ["Updates", "Store", "Detection"]
+    },
+    {
+        name: "Detection-AnonymousAccessHardeningLSA.ps1",
+        description: "Update via upstream — Detects LSA hardening status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AnonymousAccessHardeningLSA.ps1",
+        tags: ["Security", "LSA", "Detection"]
+    },
+    {
+        name: "Detection-AttackSurfaceReductionRules.ps1",
+        description: "Update from the upstream repository — Detects ASR rules configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AttackSurfaceReductionRules.ps1",
+        tags: ["Security", "ASR", "Detection"]
+    },
+    {
+        name: "Detection-AutoPatch.ps1",
+        description: "Update via upstream — Detects automatic patching status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AutoPatch.ps1",
+        tags: ["Updates", "Patch", "Detection"]
+    },
+    {
+        name: "Detection-AutoTimeZoneUpdate.ps1",
+        description: "Update via Upstream — Detects auto time zone update settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-AutoTimeZoneUpdate.ps1",
+        tags: ["Time", "Region", "Detection"]
+    },
+    {
+        name: "Detection-BuiltInTeamsChatAsSystem.ps1",
+        description: "Update via Upstream Repo — Detects Teams Chat running as System.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-BuiltInTeamsChatAsSystem.ps1",
+        tags: ["Teams", "Chat", "Detection"]
+    },
+    {
+        name: "Detection-BuiltInTeamsChatAsUser.ps1",
+        description: "Update via Upstream Repo — Detects Teams Chat running as User.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-BuiltInTeamsChatAsUser.ps1",
+        tags: ["Teams", "Chat", "Detection"]
+    },
+    {
+        name: "Detection-CVE-2023-36884.ps1",
+        description: "CVE-2023-36884 Intune mitigation — Detects vulnerable systems.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-CVE-2023-36884.ps1",
+        tags: ["Security", "CVE", "Detection"]
+    },
+    {
+        name: "Detection-CheckDrivers.ps1",
+        description: "Update from the upstream repository — Detects outdated drivers.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-CheckDrivers.ps1",
+        tags: ["Drivers", "Updates", "Detection"]
+    },
+    {
+        name: "Detection-CloudKerberosTicketRetrievalEnabled.ps1",
+        description: "Update via upstream — Detects Cloud Kerberos ticket retrieval.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-CloudKerberosTicketRetrievalEnabled.ps1",
+        tags: ["Security", "Kerberos", "Detection"]
+    },
+    {
+        name: "Detection-ConfigureOneDrive.ps1",
+        description: "Update from the upstream repository — Detects OneDrive configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-ConfigureOneDrive.ps1",
+        tags: ["OneDrive", "Cloud", "Detection"]
+    },
+    {
+        name: "Detection-CorpProfile.ps1",
+        description: "Update from the upstream repository — Detects corporate profile status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-CorpProfile.ps1",
+        tags: ["Profile", "Enterprise", "Detection"]
+    },
+    {
+        name: "Detection-DNSSettings.ps1",
+        description: "Update from the upstream repository — Detects DNS configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DNSSettings.ps1",
+        tags: ["Network", "DNS", "Detection"]
+    },
+    {
+        name: "Detection-DefenderApplicationGuard.ps1",
+        description: "Refactor — Detects Defender Application Guard status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DefenderApplicationGuard.ps1",
+        tags: ["Security", "Defender", "Detection"]
+    },
+    {
+        name: "Detection-DisableBuiltInDnsClient.ps1",
+        description: "Update Detection-DisableBuiltInDnsClient.ps1 — Detects built-in DNS client.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableBuiltInDnsClient.ps1",
+        tags: ["Network", "DNS", "Detection"]
+    },
+    {
+        name: "Detection-DisableCellularDataRoaming.ps1",
+        description: "Create Detection-DisableCellularDataRoaming.ps1 — Detects cellular roaming.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableCellularDataRoaming.ps1",
+        tags: ["Network", "Cellular", "Detection"]
+    },
+    {
+        name: "Detection-DisableChangingLockScreenBackgroundForAllUsers.ps1",
+        description: "Merge from the upstream — Detects lock screen background settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableChangingLockScreenBackgroundForAllUsers.ps1",
+        tags: ["UX", "Lock Screen", "Detection"]
+    },
+    {
+        name: "Detection-DisableCopilotButtonOnTaskbarForAllUsers.ps1",
+        description: "Create Detection-DisableCopilotButtonOnTaskbarForAllUsers.ps1 — Detects Copilot button.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableCopilotButtonOnTaskbarForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-DisableCopilotForAllUsers.ps1",
+        description: "Create Detection-DisableCopilotForAllUsers.ps1 — Detects Copilot status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableCopilotForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-DisableDontDisplayLastSignedinUser.ps1",
+        description: "Create Detection-DisableDontDisplayLastSignedinUser.ps1 — Detects sign-in display settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableDontDisplayLastSignedinUser.ps1",
+        tags: ["Sign-in", "Security", "Detection"]
+    },
+    {
+        name: "Detection-DisableDownfallSecurityMitigation.ps1",
+        description: "Create Detection-DisableDownfallSecurityMitigation.ps1 — Detects Downfall mitigation.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableDownfallSecurityMitigation.ps1",
+        tags: ["Security", "CPU", "Detection"]
+    },
+    {
+        name: "Detection-DisableIPSourceRouting.ps1",
+        description: "Update the upstream — Detects IP source routing.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableIPSourceRouting.ps1",
+        tags: ["Network", "Security", "Detection"]
+    },
+    {
+        name: "Detection-DisablePhoneLinkAppForAllUsers.ps1",
+        description: "Create Detection-DisablePhoneLinkAppForAllUsers.ps1 — Detects Phone Link app.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisablePhoneLinkAppForAllUsers.ps1",
+        tags: ["Apps", "Phone Link", "Detection"]
+    },
+    {
+        name: "Detection-DisableQUIC.ps1",
+        description: "Update via Upstream — Detects QUIC protocol status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableQUIC.ps1",
+        tags: ["Network", "Protocol", "Detection"]
+    },
+    {
+        name: "Detection-DisableSMB1Protocol.ps1",
+        description: "Update via upstream — Detects SMB1 protocol.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableSMB1Protocol.ps1",
+        tags: ["Network", "SMB", "Detection"]
+    },
+    {
+        name: "Detection-DisableShowLockScreenBackgroundOnSignInScreen.ps1",
+        description: "Merge from the upstream — Detects lock screen background on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableShowLockScreenBackgroundOnSignInScreen.ps1",
+        tags: ["UX", "Lock Screen", "Detection"]
+    },
+    {
+        name: "Detection-DisableTLS12ForEAPAuthentication.ps1",
+        description: "Update from upstream — Detects TLS 1.2 for EAP authentication.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableTLS12ForEAPAuthentication.ps1",
+        tags: ["Security", "TLS", "Detection"]
+    },
+    {
+        name: "Detection-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        description: "Create Detection-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1 — Detects email display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        tags: ["Sign-in", "Privacy", "Detection"]
+    },
+    {
+        name: "Detection-DisableWinHttpAutoProxySvcService.ps1",
+        description: "Update via upstream repo — Detects WinHTTP AutoProxy service.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DisableWinHttpAutoProxySvcService.ps1",
+        tags: ["Network", "Proxy", "Detection"]
+    },
+    {
+        name: "Detection-DoNotDisplayLastUsernameOnSignIn.ps1",
+        description: "Merge from the upstream — Detects last username display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-DoNotDisplayLastUsernameOnSignIn.ps1",
+        tags: ["Sign-in", "Security", "Detection"]
+    },
+    {
+        name: "Detection-EnableAdministratorProtection.ps1",
+        description: "Enable Administrator Protection — Detects admin protection status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableAdministratorProtection.ps1",
+        tags: ["Security", "Admin", "Detection"]
+    },
+    {
+        name: "Detection-EnableAutomaticallyLockComputerAfterInactivity.ps1",
+        description: "Merge from the upstream — Detects auto-lock after inactivity.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableAutomaticallyLockComputerAfterInactivity.ps1",
+        tags: ["Security", "Lock", "Detection"]
+    },
+    {
+        name: "Detection-EnableCellularDataRoaming.ps1",
+        description: "Create Detection-EnableCellularDataRoaming.ps1 — Detects cellular roaming.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableCellularDataRoaming.ps1",
+        tags: ["Network", "Cellular", "Detection"]
+    },
+    {
+        name: "Detection-EnableCopilotButtonOnTaskbarForAllUsers.ps1",
+        description: "Create Detection-EnableCopilotButtonOnTaskbarForAllUsers.ps1 — Detects Copilot button.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableCopilotButtonOnTaskbarForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-EnableDontDisplayLastSignedinUser.ps1",
+        description: "Create Detection-EnableDontDisplayLastSignedinUser.ps1 — Detects sign-in display settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableDontDisplayLastSignedinUser.ps1",
+        tags: ["Sign-in", "Security", "Detection"]
+    },
+    {
+        name: "Detection-EnableEdgeAutomaticUpdates.ps1",
+        description: "Refactor — Detects Edge auto-update settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableEdgeAutomaticUpdates.ps1",
+        tags: ["Browser", "Edge", "Detection"]
+    },
+    {
+        name: "Detection-EnableOneDriveIntegration.ps1",
+        description: "Update from the upstream repository — Detects OneDrive integration.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableOneDriveIntegration.ps1",
+        tags: ["OneDrive", "Cloud", "Detection"]
+    },
+    {
+        name: "Detection-EnableOrDisableWindowsCopilotForCurrentUser.ps1",
+        description: "Create Detection-EnableOrDisableWindowsCopilotForCurrentUser.ps1 — Detects Copilot for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableOrDisableWindowsCopilotForCurrentUser.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-EnablePhoneLinkAppForAllUsers.ps1",
+        description: "Create Detection-EnablePhoneLinkAppForAllUsers.ps1 — Detects Phone Link app.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnablePhoneLinkAppForAllUsers.ps1",
+        tags: ["Apps", "Phone Link", "Detection"]
+    },
+    {
+        name: "Detection-EnablePhotoViewer.ps1",
+        description: "Update from the Upstream Repo — Detects Photo Viewer status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnablePhotoViewer.ps1",
+        tags: ["Apps", "Photo", "Detection"]
+    },
+    {
+        name: "Detection-EnablePowerThrottling.ps1",
+        description: "Update from the upstream repository — Detects power throttling.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnablePowerThrottling.ps1",
+        tags: ["Power", "Performance", "Detection"]
+    },
+    {
+        name: "Detection-EnableSecureSignIn_CAD_ForAllUsers.ps1",
+        description: "Merge from the upstream — Detects secure sign-in with CAD.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableSecureSignIn_CAD_ForAllUsers.ps1",
+        tags: ["Security", "Sign-in", "Detection"]
+    },
+    {
+        name: "Detection-EnableUACPromptForBuiltInAdministratorAccount.ps1",
+        description: "Update from the upstream repository — Detects UAC prompt for admin.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableUACPromptForBuiltInAdministratorAccount.ps1",
+        tags: ["Security", "UAC", "Detection"]
+    },
+    {
+        name: "Detection-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        description: "Create Detection-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1 — Detects email display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        tags: ["Sign-in", "Privacy", "Detection"]
+    },
+    {
+        name: "Detection-EnableWinHttpAutoProxySvcService.ps1",
+        description: "Update via Upstream — Detects WinHTTP AutoProxy service.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-EnableWinHttpAutoProxySvcService.ps1",
+        tags: ["Network", "Proxy", "Detection"]
+    },
+    {
+        name: "Detection-GetLatestUpdatesAsSoonAsAvailable.ps1",
+        description: "Sync from upstream repo — Detects update delivery optimization.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-GetLatestUpdatesAsSoonAsAvailable.ps1",
+        tags: ["Updates", "Delivery", "Detection"]
+    },
+    {
+        name: "Detection-GlobalSecureAccessConnectedLocal.ps1",
+        description: "Update via upstream — Detects Global Secure Access local settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-GlobalSecureAccessConnectedLocal.ps1",
+        tags: ["Security", "Zero Trust", "Detection"]
+    },
+    {
+        name: "Detection-GlobalSecureAccessDefaultSetup.ps1",
+        description: "Update via upstream — Detects Global Secure Access default setup.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-GlobalSecureAccessDefaultSetup.ps1",
+        tags: ["Security", "Zero Trust", "Detection"]
+    },
+    {
+        name: "Detection-GlobalSecureAccessSettings.ps1",
+        description: "Update via Upstream — Detects Global Secure Access settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-GlobalSecureAccessSettings.ps1",
+        tags: ["Security", "Zero Trust", "Detection"]
+    },
+    {
+        name: "Detection-GlobalSecureAccessUserSettings.ps1",
+        description: "Update via Upstream — Detects Global Secure Access user settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-GlobalSecureAccessUserSettings.ps1",
+        tags: ["Security", "Zero Trust", "Detection"]
+    },
+    {
+        name: "Detection-HKCU_DisablePersonalSync.ps1",
+        description: "Update via upstream — Detects personal sync settings in HKCU.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-HKCU_DisablePersonalSync.ps1",
+        tags: ["Sync", "Privacy", "Detection"]
+    },
+    {
+        name: "Detection-HKLM_DisableNewAccountDetection.ps1",
+        description: "Update via upstream — Detects new account detection in HKLM.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-HKLM_DisableNewAccountDetection.ps1",
+        tags: ["Accounts", "Security", "Detection"]
+    },
+    {
+        name: "Detection-HideWSLLinuxIconFromDesktop.ps1",
+        description: "Update via upstream — Detects WSL Linux icon on desktop.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-HideWSLLinuxIconFromDesktop.ps1",
+        tags: ["WSL", "Desktop", "Detection"]
+    },
+    {
+        name: "Detection-IsWVDEnvironment.ps1",
+        description: "IsWVDEnvironment — Detects if running in Windows Virtual Desktop.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-IsWVDEnvironment.ps1",
+        tags: ["WVD", "Virtualization", "Detection"]
+    },
+    {
+        name: "Detection-IsWinGetInstalled.ps1",
+        description: "Update from upstream — Detects WinGet installation.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-IsWinGetInstalled.ps1",
+        tags: ["Package", "WinGet", "Detection"]
+    },
+    {
+        name: "Detection-L2TPNATSupport.ps1",
+        description: "Merge from the upstream — Detects L2TP NAT support.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-L2TPNATSupport.ps1",
+        tags: ["Network", "VPN", "Detection"]
+    },
+    {
+        name: "Detection-L2TPNATSupportAndTweaks.ps1",
+        description: "Merge from the upstream — Detects L2TP NAT support and tweaks.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-L2TPNATSupportAndTweaks.ps1",
+        tags: ["Network", "VPN", "Detection"]
+    },
+    {
+        name: "Detection-LLMNR-Multicast.ps1",
+        description: "Update from the upstream repository — Detects LLMNR and multicast settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-LLMNR-Multicast.ps1",
+        tags: ["Network", "Security", "Detection"]
+    },
+    {
+        name: "Detection-LidNotifyReliable.ps1",
+        description: "Update from the Upstream Repo — Detects lid notify reliability.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-LidNotifyReliable.ps1",
+        tags: ["Power", "Lid", "Detection"]
+    },
+    {
+        name: "Detection-LockScreen.ps1",
+        description: "Refactor — Detects lock screen settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-LockScreen.ps1",
+        tags: ["UX", "Lock Screen", "Detection"]
+    },
+    {
+        name: "Detection-MMAgent.ps1",
+        description: "Update from the upstream repository — Detects MM Agent status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MMAgent.ps1",
+        tags: ["Agent", "Management", "Detection"]
+    },
+    {
+        name: "Detection-MSRDC2Insider.ps1",
+        description: "Sync from upstream — Detects MSRDC2 Insider status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MSRDC2Insider.ps1",
+        tags: ["Remote", "Desktop", "Detection"]
+    },
+    {
+        name: "Detection-MicrosoftDefenderConfig.ps1",
+        description: "Update via upstream — Detects Microsoft Defender configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MicrosoftDefenderConfig.ps1",
+        tags: ["Security", "Defender", "Detection"]
+    },
+    {
+        name: "Detection-MicrosoftUpdateNoAutoUpdate.ps1",
+        description: "Update from the upstream repository — Detects Microsoft Update auto-update.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MicrosoftUpdateNoAutoUpdate.ps1",
+        tags: ["Updates", "Microsoft", "Detection"]
+    },
+    {
+        name: "Detection-MicrosoftWindowsUnquotedServicePath.ps1",
+        description: "Update via Upstream — Detects unquoted service paths.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MicrosoftWindowsUnquotedServicePath.ps1",
+        tags: ["Security", "Services", "Detection"]
+    },
+    {
+        name: "Detection-MitigateCVE202230190.ps1",
+        description: "Update from the upstream repository — Detects CVE-2022-30190 status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MitigateCVE202230190.ps1",
+        tags: ["Security", "CVE", "Detection"]
+    },
+    {
+        name: "Detection-MitigateOutlookCrashingWorkaroundJune2025.ps1",
+        description: "Classic Outlook crashes — Detects Outlook crash conditions.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MitigateOutlookCrashingWorkaroundJune2025.ps1",
+        tags: ["Mail", "Outlook", "Detection"]
+    },
+    {
+        name: "Detection-MitigateSearchMS.ps1",
+        description: "Update from the upstream repository — Detects SearchMS mitigation.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-MitigateSearchMS.ps1",
+        tags: ["Search", "Security", "Detection"]
+    },
+    {
+        name: "Detection-NCAllowNetBridgeNLA.ps1",
+        description: "Update the upstream — Detects network bridge NLA settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-NCAllowNetBridgeNLA.ps1",
+        tags: ["Network", "NLA", "Detection"]
+    },
+    {
+        name: "Detection-NCStdDomainUserSetLocation.ps1",
+        description: "Update the upstream — Detects domain user location settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-NCStdDomainUserSetLocation.ps1",
+        tags: ["Network", "Domain", "Detection"]
+    },
+    {
+        name: "Detection-Netbios.ps1",
+        description: "Update from the upstream repository — Detects NetBIOS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-Netbios.ps1",
+        tags: ["Network", "NetBIOS", "Detection"]
+    },
+    {
+        name: "Detection-NewTeamsQos.ps1",
+        description: "New Teams Client QoS — Detects Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-NewTeamsQos.ps1",
+        tags: ["Teams", "QoS", "Detection"]
+    },
+    {
+        name: "Detection-NoCopilotPlusAndRecall.ps1",
+        description: "Update via Upstream Repo — Detects Copilot+ and Recall features.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-NoCopilotPlusAndRecall.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-OfficeCopilotFeatures.ps1",
+        description: "Update via upstream repo — Detects Office Copilot features.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OfficeCopilotFeatures.ps1",
+        tags: ["Office", "Copilot", "Detection"]
+    },
+    {
+        name: "Detection-OfficeUpdateHideEnableDisableUpdates.ps1",
+        description: "Update the upstream — Detects Office update settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OfficeUpdateHideEnableDisableUpdates.ps1",
+        tags: ["Office", "Updates", "Detection"]
+    },
+    {
+        name: "Detection-OneDrive.ps1",
+        description: "Merge from the upstream — Detects OneDrive status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OneDrive.ps1",
+        tags: ["OneDrive", "Cloud", "Detection"]
+    },
+    {
+        name: "Detection-OneDriveDelayFlag.ps1",
+        description: "Merge from the upstream — Detects OneDrive delay flag.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OneDriveDelayFlag.ps1",
+        tags: ["OneDrive", "Cloud", "Detection"]
+    },
+    {
+        name: "Detection-OutdatedChocolateyApps.ps1",
+        description: "Update from the upstream Repo — Detects outdated Chocolatey apps.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OutdatedChocolateyApps.ps1",
+        tags: ["Package", "Chocolatey", "Detection"]
+    },
+    {
+        name: "Detection-OutdatedWingetApps.ps1",
+        description: "Update from the upstream Repo — Detects outdated Winget apps.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-OutdatedWingetApps.ps1",
+        tags: ["Package", "WinGet", "Detection"]
+    },
+    {
+        name: "Detection-PSModuleUpdate.ps1",
+        description: "Update via Upstream — Detects PowerShell module updates.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-PSModuleUpdate.ps1",
+        tags: ["PowerShell", "Modules", "Detection"]
+    },
+    {
+        name: "Detection-PendingWinGetUpdates.ps1",
+        description: "Update via upstream — Detects pending WinGet updates.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-PendingWinGetUpdates.ps1",
+        tags: ["Package", "WinGet", "Detection"]
+    },
+    {
+        name: "Detection-RegisteredOwnerAndOrganization.ps1",
+        description: "Registered Owner and Organization — Detects system registration info.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RegisteredOwnerAndOrganization.ps1",
+        tags: ["System", "Info", "Detection"]
+    },
+    {
+        name: "Detection-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1",
+        description: "Create Detection-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1 — Detects Copilot button for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1",
+        tags: ["Copilot", "AI", "Detection"]
+    },
+    {
+        name: "Detection-RemoveSystemRequirementsNotMetWatermark.ps1",
+        description: "Create Detection-RemoveSystemRequirementsNotMetWatermark.ps1 — Detects watermark status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RemoveSystemRequirementsNotMetWatermark.ps1",
+        tags: ["UX", "Watermark", "Detection"]
+    },
+    {
+        name: "Detection-RemoveWindowsWatermarkOnDesktopForAllUser.ps1",
+        description: "Create Detection-RemoveWindowsWatermarkOnDesktopForAllUser.ps1 — Detects desktop watermark for all users.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RemoveWindowsWatermarkOnDesktopForAllUser.ps1",
+        tags: ["UX", "Watermark", "Detection"]
+    },
+    {
+        name: "Detection-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1",
+        description: "Create Detection-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1 — Detects desktop watermark for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1",
+        tags: ["UX", "Watermark", "Detection"]
+    },
+    {
+        name: "Detection-RemoveWslDesktopIcon.ps1",
+        description: "Hide/Remove WSL Linux icon from Desktop — Detects WSL icon visibility.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RemoveWslDesktopIcon.ps1",
+        tags: ["WSL", "Desktop", "Detection"]
+    },
+    {
+        name: "Detection-RenameThisPCIcon_USER.ps1",
+        description: "Rename THIS PC to match the Hostname — Detects PC icon naming.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-RenameThisPCIcon_USER.ps1",
+        tags: ["UX", "Naming", "Detection"]
+    },
+    {
+        name: "Detection-SaveSentItemsInSharedMailbox.ps1",
+        description: "Update from the upstream — Detects sent items saving in shared mailbox.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-SaveSentItemsInSharedMailbox.ps1",
+        tags: ["Mail", "Exchange", "Detection"]
+    },
+    {
+        name: "Detection-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        description: "Enable the Microsoft Defender Removable Drive Scanning — Detects Defender scanning status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        tags: ["Security", "Defender", "Detection"]
+    },
+    {
+        name: "Detection-SetupBraveBrowser.ps1",
+        description: "Update via Upstream — Detects Brave Browser setup.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-SetupBraveBrowser.ps1",
+        tags: ["Browser", "Brave", "Detection"]
+    },
+    {
+        name: "Detection-SetupMicrosoftEdgeBrowser.ps1",
+        description: "Update via Upstream — Detects Microsoft Edge setup.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-SetupMicrosoftEdgeBrowser.ps1",
+        tags: ["Browser", "Edge", "Detection"]
+    },
+    {
+        name: "Detection-ShowThisPCIcon_USER.ps1",
+        description: "Show THIS PC on Users Desktop — Detects This PC icon visibility.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-ShowThisPCIcon_USER.ps1",
+        tags: ["UX", "Desktop", "Detection"]
+    },
+    {
+        name: "Detection-SystemWPADOverride.ps1",
+        description: "Update via upstream repo — Detects system WPAD override.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-SystemWPADOverride.ps1",
+        tags: ["Network", "WPAD", "Detection"]
+    },
+    {
+        name: "Detection-TeamsFirewallPerUser.ps1",
+        description: "Update via Upstream — Detects Teams firewall per-user settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TeamsFirewallPerUser.ps1",
+        tags: ["Teams", "Firewall", "Detection"]
+    },
+    {
+        name: "Detection-TeamsQos.ps1",
+        description: "Update from the Upstream Repo — Detects Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TeamsQos.ps1",
+        tags: ["Teams", "QoS", "Detection"]
+    },
+    {
+        name: "Detection-TurnOffPhoneLinkForCurrentUser.ps1",
+        description: "Create Detection-TurnOffPhoneLinkForCurrentUser.ps1 — Detects Phone Link for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOffPhoneLinkForCurrentUser.ps1",
+        tags: ["Apps", "Phone Link", "Detection"]
+    },
+    {
+        name: "Detection-TurnOffUseCellularWhenWiFiIsPoor.ps1",
+        description: "Create Detection-TurnOffUseCellularWhenWiFiIsPoor.ps1 — Detects cellular fallback.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOffUseCellularWhenWiFiIsPoor.ps1",
+        tags: ["Network", "Cellular", "Detection"]
+    },
+    {
+        name: "Detection-TurnOnAutoEndTasksForAllUsers.ps1",
+        description: "Update from the upstream repository — Detects auto-end tasks setting.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOnAutoEndTasksForAllUsers.ps1",
+        tags: ["Performance", "Tasks", "Detection"]
+    },
+    {
+        name: "Detection-TurnOnCoreIsolationMemoryIntegrity.ps1",
+        description: "Update from the upstream repository — Detects memory integrity.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOnCoreIsolationMemoryIntegrity.ps1",
+        tags: ["Security", "Memory", "Detection"]
+    },
+    {
+        name: "Detection-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1",
+        description: "Create Detection-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1 — Detects LSA protection without UEFI lock.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1",
+        tags: ["Security", "LSA", "Detection"]
+    },
+    {
+        name: "Detection-TurnOnPhoneLinkForCurrentUser.ps1",
+        description: "Create Detection-TurnOnPhoneLinkForCurrentUser.ps1 — Detects Phone Link for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOnPhoneLinkForCurrentUser.ps1",
+        tags: ["Apps", "Phone Link", "Detection"]
+    },
+    {
+        name: "Detection-TurnOnUseCellularWhenWiFiIsPoor.ps1",
+        description: "Create Detection-TurnOnUseCellularWhenWiFiIsPoor.ps1 — Detects cellular fallback.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-TurnOnUseCellularWhenWiFiIsPoor.ps1",
+        tags: ["Network", "Cellular", "Detection"]
+    },
+    {
+        name: "Detection-UACAlwaysNotify.ps1",
+        description: "Create Detection-UACAlwaysNotify.ps1 — Detects UAC always notify setting.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-UACAlwaysNotify.ps1",
+        tags: ["Security", "UAC", "Detection"]
+    },
+    {
+        name: "Detection-UACDefault.ps1",
+        description: "Create Detection-UACDefault.ps1 — Detects default UAC setting.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-UACDefault.ps1",
+        tags: ["Security", "UAC", "Detection"]
+    },
+    {
+        name: "Detection-UACDoNotDim.ps1",
+        description: "Create Detection-UACDoNotDim.ps1 — Detects UAC dim setting.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-UACDoNotDim.ps1",
+        tags: ["Security", "UAC", "Detection"]
+    },
+    {
+        name: "Detection-UptimeToLong.ps1",
+        description: "Update from the upstream Repo — Detects long system uptime.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-UptimeToLong.ps1",
+        tags: ["System", "Uptime", "Detection"]
+    },
+    {
+        name: "Detection-UserWPADOverride.ps1",
+        description: "Update via upstream repo — Detects user WPAD override.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-UserWPADOverride.ps1",
+        tags: ["Network", "WPAD", "Detection"]
+    },
+    {
+        name: "Detection-VSthroughMUUpdates.ps1",
+        description: "Update via upstream — Detects Visual Studio updates through Microsoft Update.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-VSthroughMUUpdates.ps1",
+        tags: ["Updates", "Visual Studio", "Detection"]
+    },
+    {
+        name: "Detection-WOLSurfaceStudio2.ps1",
+        description: "Update from the upstream — Detects Wake-on-LAN for Surface Studio 2.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-WOLSurfaceStudio2.ps1",
+        tags: ["Power", "WOL", "Detection"]
+    },
+    {
+        name: "Detection-WindowsExplorerSettings.ps1",
+        description: "Refactor — Detects Windows Explorer settings.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-WindowsExplorerSettings.ps1",
+        tags: ["UX", "Explorer", "Detection"]
+    },
+    {
+        name: "Detection-WlanfixForWindows11Release24H2.ps1",
+        description: "Update via Upstream — Detects Wi-Fi fix for Windows 11 24H2.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-WlanfixForWindows11Release24H2.ps1",
+        tags: ["Network", "Wi-Fi", "Detection"]
+    },
+    {
+        name: "Detection-localAdminEnabled.ps1",
+        description: "Update via upstream Repo — Detects local admin enabled status.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-localAdminEnabled.ps1",
+        tags: ["Security", "Admin", "Detection"]
+    },
+    {
+        name: "Detection-localAdminName.ps1",
+        description: "Update via upstream Repo — Detects local admin account name.",
+        path: "scripts/Intune/ProactiveRemediations/Detection-localAdminName.ps1",
+        tags: ["Security", "Admin", "Detection"]
+    },
+    {
+        name: "Remediate-NewTeamsQos.ps1",
+        description: "New Teams Client QoS — Remediates Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediate-NewTeamsQos.ps1",
+        tags: ["Teams", "QoS", "Remediation"]
+    },
+    {
+        name: "Remediate-OneDriveDelayFlag.ps1",
+        description: "Merge from the upstream — Remediates OneDrive delay flag.",
+        path: "scripts/Intune/ProactiveRemediations/Remediate-OneDriveDelayFlag.ps1",
+        tags: ["OneDrive", "Cloud", "Remediation"]
+    },
+    {
+        name: "Remediate-TeamsFirewallPerUser.ps1",
+        description: "Update via Upstream — Remediates Teams firewall per-user settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediate-TeamsFirewallPerUser.ps1",
+        tags: ["Teams", "Firewall", "Remediation"]
+    },
+    {
+        name: "Remediate-TeamsQos.ps1",
+        description: "Update from the Upstream Repo — Remediates Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediate-TeamsQos.ps1",
+        tags: ["Teams", "QoS", "Remediation"]
+    },
+    {
+        name: "Remediation-AllowNonAdminsToManageThePublicDesktop.ps1",
+        description: "Update from the Upstream Repo — Remediates public desktop permissions.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AllowNonAdminsToManageThePublicDesktop.ps1",
+        tags: ["Desktop", "Policy", "Remediation"]
+    },
+    {
+        name: "Remediation-AllowSideLoadingForTrustedApps.ps1",
+        description: "AllowSideLoadingForTrustedApps — Remediates side-loading for trusted apps.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AllowSideLoadingForTrustedApps.ps1",
+        tags: ["Apps", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-AlwaysEnableMicrosoftDefenderPUAProtectionAndBlockApps.ps1",
+        description: "Update from the upstream repository — Remediates PUA protection.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AlwaysEnableMicrosoftDefenderPUAProtectionAndBlockApps.ps1",
+        tags: ["Security", "Defender", "Remediation"]
+    },
+    {
+        name: "Remediation-AlwaysOnStoreAutomaticDownloadInstallUpdates.ps1",
+        description: "Update from the upstream repository — Remediates Store auto-update.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AlwaysOnStoreAutomaticDownloadInstallUpdates.ps1",
+        tags: ["Updates", "Store", "Remediation"]
+    },
+    {
+        name: "Remediation-AnonymousAccessHardeningLSA.ps1",
+        description: "Update via upstream — Remediates LSA hardening.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AnonymousAccessHardeningLSA.ps1",
+        tags: ["Security", "LSA", "Remediation"]
+    },
+    {
+        name: "Remediation-AttackSurfaceReductionRules.ps1",
+        description: "Update from the upstream repository — Remediates ASR rules.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AttackSurfaceReductionRules.ps1",
+        tags: ["Security", "ASR", "Remediation"]
+    },
+    {
+        name: "Remediation-AutoPatch.ps1",
+        description: "Update via upstream — Remediates automatic patching.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AutoPatch.ps1",
+        tags: ["Updates", "Patch", "Remediation"]
+    },
+    {
+        name: "Remediation-AutoTimeZoneUpdate.ps1",
+        description: "Update via Upstream — Remediates auto time zone update.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-AutoTimeZoneUpdate.ps1",
+        tags: ["Time", "Region", "Remediation"]
+    },
+    {
+        name: "Remediation-BuiltInTeamsChatAsSystem.ps1",
+        description: "Update via Upstream Repo — Remediates Teams Chat as System.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-BuiltInTeamsChatAsSystem.ps1",
+        tags: ["Teams", "Chat", "Remediation"]
+    },
+    {
+        name: "Remediation-BuiltInTeamsChatAsUser.ps1",
+        description: "Update via Upstream Repo — Remediates Teams Chat as User.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-BuiltInTeamsChatAsUser.ps1",
+        tags: ["Teams", "Chat", "Remediation"]
+    },
+    {
+        name: "Remediation-CVE-2023-36884.ps1",
+        description: "CVE-2023-36884 Intune mitigation — Remediates CVE-2023-36884 vulnerability.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-CVE-2023-36884.ps1",
+        tags: ["Security", "CVE", "Remediation"]
+    },
+    {
+        name: "Remediation-CheckDrivers.ps1",
+        description: "Update from the upstream repository — Remediates outdated drivers.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-CheckDrivers.ps1",
+        tags: ["Drivers", "Updates", "Remediation"]
+    },
+    {
+        name: "Remediation-CloudKerberosTicketRetrievalEnabled.ps1",
+        description: "Update via upstream — Remediates Cloud Kerberos ticket retrieval.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-CloudKerberosTicketRetrievalEnabled.ps1",
+        tags: ["Security", "Kerberos", "Remediation"]
+    },
+    {
+        name: "Remediation-ConfigureOneDrive.ps1",
+        description: "Update from the upstream repository — Remediates OneDrive configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-ConfigureOneDrive.ps1",
+        tags: ["OneDrive", "Cloud", "Remediation"]
+    },
+    {
+        name: "Remediation-CorpProfile.ps1",
+        description: "Update from the upstream repository — Remediates corporate profile.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-CorpProfile.ps1",
+        tags: ["Profile", "Enterprise", "Remediation"]
+    },
+    {
+        name: "Remediation-DNSSetings.ps1",
+        description: "Update from the upstream repository — Remediates DNS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DNSSetings.ps1",
+        tags: ["Network", "DNS", "Remediation"]
+    },
+    {
+        name: "Remediation-DefenderApplicationGuard.ps1",
+        description: "Refactor — Remediates Defender Application Guard.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DefenderApplicationGuard.ps1",
+        tags: ["Security", "Defender", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableBuiltInDnsClient.ps1",
+        description: "Disable Browser built in DNS client for full Global Secure Access (GSA) — Remediates built-in DNS client.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableBuiltInDnsClient.ps1",
+        tags: ["Network", "DNS", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableCellularDataRoaming.ps1",
+        description: "Create Remediation-DisableCellularDataRoaming.ps1 — Remediates cellular roaming.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableCellularDataRoaming.ps1",
+        tags: ["Network", "Cellular", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableChangingLockScreenBackgroundForAllUsers.ps1",
+        description: "Merge from the upstream — Remediates lock screen background.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableChangingLockScreenBackgroundForAllUsers.ps1",
+        tags: ["UX", "Lock Screen", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableCopilotButtonOnTaskbarForAllUsers.ps1",
+        description: "Create Remediation-DisableCopilotButtonOnTaskbarForAllUsers.ps1 — Remediates Copilot button.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableCopilotButtonOnTaskbarForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableCopilotForAllUsers.ps1",
+        description: "Create Remediation-DisableCopilotForAllUsers.ps1 — Remediates Copilot status.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableCopilotForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableDontDisplayLastSignedinUser.ps1",
+        description: "Create Remediation-DisableDontDisplayLastSignedinUser.ps1 — Remediates sign-in display.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableDontDisplayLastSignedinUser.ps1",
+        tags: ["Sign-in", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableDownfallSecurityMitigation.ps1",
+        description: "Create Remediation-DisableDownfallSecurityMitigation.ps1 — Remediates Downfall mitigation.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableDownfallSecurityMitigation.ps1",
+        tags: ["Security", "CPU", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableIPSourceRouting.ps1",
+        description: "Update the upstream — Remediates IP source routing.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableIPSourceRouting.ps1",
+        tags: ["Network", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-DisablePhoneLinkAppForAllUsers.ps1",
+        description: "Create Remediation-DisablePhoneLinkAppForAllUsers.ps1 — Remediates Phone Link app.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisablePhoneLinkAppForAllUsers.ps1",
+        tags: ["Apps", "Phone Link", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableQUIC.ps1",
+        description: "Update via Upstream — Remediates QUIC protocol.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableQUIC.ps1",
+        tags: ["Network", "Protocol", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableSMB1Protocol.ps1",
+        description: "Update via upstream — Remediates SMB1 protocol.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableSMB1Protocol.ps1",
+        tags: ["Network", "SMB", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableShowLockScreenBackgroundOnSignInScreen.ps1",
+        description: "Merge from the upstream — Remediates lock screen background on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableShowLockScreenBackgroundOnSignInScreen.ps1",
+        tags: ["UX", "Lock Screen", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableTLS12ForEAPAuthentication.ps1",
+        description: "Update from upstream — Remediates TLS 1.2 for EAP authentication.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableTLS12ForEAPAuthentication.ps1",
+        tags: ["Security", "TLS", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        description: "Create Remediation-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1 — Remediates email display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        tags: ["Sign-in", "Privacy", "Remediation"]
+    },
+    {
+        name: "Remediation-DisableWinHttpAutoProxySvcService.ps1",
+        description: "Update via upstream repo — Remediates WinHTTP AutoProxy service.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DisableWinHttpAutoProxySvcService.ps1",
+        tags: ["Network", "Proxy", "Remediation"]
+    },
+    {
+        name: "Remediation-DoNotDisplayLastUsernameOnSignIn.ps1",
+        description: "Merge from the upstream — Remediates last username display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-DoNotDisplayLastUsernameOnSignIn.ps1",
+        tags: ["Sign-in", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableAdministratorProtection.ps1",
+        description: "Enable Administrator Protection — Remediates admin protection.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableAdministratorProtection.ps1",
+        tags: ["Security", "Admin", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableAutomaticallyLockComputerAfterInactivity.ps1",
+        description: "Merge from the upstream — Remediates auto-lock after inactivity.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableAutomaticallyLockComputerAfterInactivity.ps1",
+        tags: ["Security", "Lock", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableCellularDataRoaming.ps1",
+        description: "Create Remediation-EnableCellularDataRoaming.ps1 — Remediates cellular roaming.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableCellularDataRoaming.ps1",
+        tags: ["Network", "Cellular", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableCopilotButtonOnTaskbarForAllUsers.ps1",
+        description: "Create Remediation-EnableCopilotButtonOnTaskbarForAllUsers.ps1 — Remediates Copilot button.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableCopilotButtonOnTaskbarForAllUsers.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableDontDisplayLastSignedinUser.ps1",
+        description: "Create Remediation-EnableDontDisplayLastSignedinUser.ps1 — Remediates sign-in display.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableDontDisplayLastSignedinUser.ps1",
+        tags: ["Sign-in", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableEdgeAutomaticUpdates.ps1",
+        description: "Refactor — Remediates Edge auto-update.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableEdgeAutomaticUpdates.ps1",
+        tags: ["Browser", "Edge", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableOneDriveIntegration.ps1",
+        description: "Update from the upstream repository — Remediates OneDrive integration.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableOneDriveIntegration.ps1",
+        tags: ["OneDrive", "Cloud", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableOrDisableWindowsCopilotForCurrentUser.ps1",
+        description: "Create Remediation-EnableOrDisableWindowsCopilotForCurrentUser.ps1 — Remediates Copilot for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableOrDisableWindowsCopilotForCurrentUser.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-EnablePhoneLinkAppForAllUsers.ps1",
+        description: "Create Remediation-EnablePhoneLinkAppForAllUsers.ps1 — Remediates Phone Link app.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnablePhoneLinkAppForAllUsers.ps1",
+        tags: ["Apps", "Phone Link", "Remediation"]
+    },
+    {
+        name: "Remediation-EnablePhotoViewer.ps1",
+        description: "Update from the Upstream Repo — Remediates Photo Viewer.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnablePhotoViewer.ps1",
+        tags: ["Apps", "Photo", "Remediation"]
+    },
+    {
+        name: "Remediation-EnablePowerThrottling.ps1",
+        description: "Update from the upstream repository — Remediates power throttling.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnablePowerThrottling.ps1",
+        tags: ["Power", "Performance", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableSecureSignIn_CAD_ForAllUsers.ps1",
+        description: "Merge from the upstream — Remediates secure sign-in with CAD.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableSecureSignIn_CAD_ForAllUsers.ps1",
+        tags: ["Security", "Sign-in", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableUACPromptForBuiltInAdministratorAccount.ps1",
+        description: "Update from the upstream repository — Remediates UAC prompt for admin.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableUACPromptForBuiltInAdministratorAccount.ps1",
+        tags: ["Security", "UAC", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        description: "Create Remediation-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1 — Remediates email display on sign-in.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableUserChoiceShowAccountEmailAddressOnSignInScreen.ps1",
+        tags: ["Sign-in", "Privacy", "Remediation"]
+    },
+    {
+        name: "Remediation-EnableWinHttpAutoProxySvcService.ps1",
+        description: "Update via Upstream — Remediates WinHTTP AutoProxy service.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-EnableWinHttpAutoProxySvcService.ps1",
+        tags: ["Network", "Proxy", "Remediation"]
+    },
+    {
+        name: "Remediation-GetLatestUpdatesAsSoonAsAvailable.ps1",
+        description: "Sync from upstream repo — Remediates update delivery optimization.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-GetLatestUpdatesAsSoonAsAvailable.ps1",
+        tags: ["Updates", "Delivery", "Remediation"]
+    },
+    {
+        name: "Remediation-GlobalSecureAccessConnectedLocal.ps1",
+        description: "Update via upstream — Remediates Global Secure Access local settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-GlobalSecureAccessConnectedLocal.ps1",
+        tags: ["Security", "Zero Trust", "Remediation"]
+    },
+    {
+        name: "Remediation-GlobalSecureAccessDefaultSetup.ps1",
+        description: "Update via upstream — Remediates Global Secure Access default setup.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-GlobalSecureAccessDefaultSetup.ps1",
+        tags: ["Security", "Zero Trust", "Remediation"]
+    },
+    {
+        name: "Remediation-GlobalSecureAccessSettings.ps1",
+        description: "Update via Upstream — Remediates Global Secure Access settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-GlobalSecureAccessSettings.ps1",
+        tags: ["Security", "Zero Trust", "Remediation"]
+    },
+    {
+        name: "Remediation-GlobalSecureAccessUserSettings.ps1",
+        description: "Update via Upstream — Remediates Global Secure Access user settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-GlobalSecureAccessUserSettings.ps1",
+        tags: ["Security", "Zero Trust", "Remediation"]
+    },
+    {
+        name: "Remediation-HKCU_DisablePersonalSync.ps1",
+        description: "Update via upstream — Remediates personal sync in HKCU.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-HKCU_DisablePersonalSync.ps1",
+        tags: ["Sync", "Privacy", "Remediation"]
+    },
+    {
+        name: "Remediation-HKLM_DisableNewAccountDetection.ps1",
+        description: "Update via upstream — Remediates new account detection in HKLM.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-HKLM_DisableNewAccountDetection.ps1",
+        tags: ["Accounts", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-HideWSLLinuxIconFromDesktop.ps1",
+        description: "Update via upstream — Remediates WSL Linux icon on desktop.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-HideWSLLinuxIconFromDesktop.ps1",
+        tags: ["WSL", "Desktop", "Remediation"]
+    },
+    {
+        name: "Remediation-IsWVDEnvironment.ps1",
+        description: "IsWVDEnvironment — Remediates Windows Virtual Desktop environment.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-IsWVDEnvironment.ps1",
+        tags: ["WVD", "Virtualization", "Remediation"]
+    },
+    {
+        name: "Remediation-IsWinGetInstalled.ps1",
+        description: "Update from upstream — Remediates WinGet installation.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-IsWinGetInstalled.ps1",
+        tags: ["Package", "WinGet", "Remediation"]
+    },
+    {
+        name: "Remediation-L2TPNATSupport.ps1",
+        description: "Merge from the upstream — Remediates L2TP NAT support.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-L2TPNATSupport.ps1",
+        tags: ["Network", "VPN", "Remediation"]
+    },
+    {
+        name: "Remediation-L2TPNATSupportAndTweaks.ps1",
+        description: "Merge from the upstream — Remediates L2TP NAT support and tweaks.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-L2TPNATSupportAndTweaks.ps1",
+        tags: ["Network", "VPN", "Remediation"]
+    },
+    {
+        name: "Remediation-LLMNR-Multicast.ps1",
+        description: "Update from the upstream repository — Remediates LLMNR and multicast.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-LLMNR-Multicast.ps1",
+        tags: ["Network", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-LidNotifyReliable.ps1",
+        description: "Update from the upstream — Remediates lid notify reliability.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-LidNotifyReliable.ps1",
+        tags: ["Power", "Lid", "Remediation"]
+    },
+    {
+        name: "Remediation-LockScreen.ps1",
+        description: "Refactor — Remediates lock screen settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-LockScreen.ps1",
+        tags: ["UX", "Lock Screen", "Remediation"]
+    },
+    {
+        name: "Remediation-MMAgent.ps1",
+        description: "Update from the upstream repository — Remediates MM Agent.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MMAgent.ps1",
+        tags: ["Agent", "Management", "Remediation"]
+    },
+    {
+        name: "Remediation-MSRDC2Insider.ps1",
+        description: "Sync from upstream — Remediates MSRDC2 Insider status.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MSRDC2Insider.ps1",
+        tags: ["Remote", "Desktop", "Remediation"]
+    },
+    {
+        name: "Remediation-MicrosoftDefenderConfig.ps1",
+        description: "Update via upstream — Remediates Microsoft Defender configuration.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MicrosoftDefenderConfig.ps1",
+        tags: ["Security", "Defender", "Remediation"]
+    },
+    {
+        name: "Remediation-MicrosoftUpdateNoAutoUpdate.ps1",
+        description: "Update from the upstream repository — Remediates Microsoft Update auto-update.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MicrosoftUpdateNoAutoUpdate.ps1",
+        tags: ["Updates", "Microsoft", "Remediation"]
+    },
+    {
+        name: "Remediation-MicrosoftWindowsUnquotedServicePath.ps1",
+        description: "Update via Upstream — Remediates unquoted service paths.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MicrosoftWindowsUnquotedServicePath.ps1",
+        tags: ["Security", "Services", "Remediation"]
+    },
+    {
+        name: "Remediation-MitigateCVE202230190.ps1",
+        description: "Update from the upstream repository — Remediates CVE-2022-30190.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MitigateCVE202230190.ps1",
+        tags: ["Security", "CVE", "Remediation"]
+    },
+    {
+        name: "Remediation-MitigateOutlookCrashingWorkaroundJune2025.ps1",
+        description: "Classic Outlook crashes — Remediates Outlook crash issue.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MitigateOutlookCrashingWorkaroundJune2025.ps1",
+        tags: ["Mail", "Outlook", "Remediation"]
+    },
+    {
+        name: "Remediation-MitigateSearchMS.ps1",
+        description: "Update from the upstream repository — Remediates SearchMS mitigation.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-MitigateSearchMS.ps1",
+        tags: ["Search", "Security", "Remediation"]
+    },
+    {
+        name: "Remediation-NCAllowNetBridgeNLA.ps1",
+        description: "Update the upstream — Remediates network bridge NLA settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-NCAllowNetBridgeNLA.ps1",
+        tags: ["Network", "NLA", "Remediation"]
+    },
+    {
+        name: "Remediation-NCStdDomainUserSetLocation.ps1",
+        description: "Update the upstream — Remediates domain user location settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-NCStdDomainUserSetLocation.ps1",
+        tags: ["Network", "Domain", "Remediation"]
+    },
+    {
+        name: "Remediation-Netbios.ps1",
+        description: "Update from the upstream repository — Remediates NetBIOS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-Netbios.ps1",
+        tags: ["Network", "NetBIOS", "Remediation"]
+    },
+    {
+        name: "Remediation-NewTeamsQos.ps1",
+        description: "Update via upstream — Remediates Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-NewTeamsQos.ps1",
+        tags: ["Teams", "QoS", "Remediation"]
+    },
+    {
+        name: "Remediation-NoCopilotPlusAndRecall.ps1",
+        description: "Update via Upstream Repo — Remediates Copilot+ and Recall features.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-NoCopilotPlusAndRecall.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-OfficeCopilotFeatures.ps1",
+        description: "Update via upstream repo — Remediates Office Copilot features.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-OfficeCopilotFeatures.ps1",
+        tags: ["Office", "Copilot", "Remediation"]
+    },
+    {
+        name: "Remediation-OfficeUpdateHideEnableDisableUpdates.ps1",
+        description: "Update the upstream — Remediates Office update settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-OfficeUpdateHideEnableDisableUpdates.ps1",
+        tags: ["Office", "Updates", "Remediation"]
+    },
+    {
+        name: "Remediation-OneDrive.ps1",
+        description: "Merge from the upstream — Remediates OneDrive status.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-OneDrive.ps1",
+        tags: ["OneDrive", "Cloud", "Remediation"]
+    },
+    {
+        name: "Remediation-OutdatedChocolateyApps.ps1",
+        description: "Update from the upstream Repo — Remediates outdated Chocolatey apps.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-OutdatedChocolateyApps.ps1",
+        tags: ["Package", "Chocolatey", "Remediation"]
+    },
+    {
+        name: "Remediation-OutdatedWingetApps.ps1",
+        description: "Update Remediation-OutdatedWingetApps.ps1 — Remediates outdated Winget apps.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-OutdatedWingetApps.ps1",
+        tags: ["Package", "WinGet", "Remediation"]
+    },
+    {
+        name: "Remediation-PSModuleUpdate.ps1",
+        description: "Update via Upstream — Remediates PowerShell module updates.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-PSModuleUpdate.ps1",
+        tags: ["PowerShell", "Modules", "Remediation"]
+    },
+    {
+        name: "Remediation-PendingWinGetUpdates.ps1",
+        description: "Update via upstream — Remediates pending WinGet updates.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-PendingWinGetUpdates.ps1",
+        tags: ["Package", "WinGet", "Remediation"]
+    },
+    {
+        name: "Remediation-RegisteredOwnerAndOrganization.ps1",
+        description: "Registered Owner and Organization — Remediates system registration info.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RegisteredOwnerAndOrganization.ps1",
+        tags: ["System", "Info", "Remediation"]
+    },
+    {
+        name: "Remediation-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1",
+        description: "Create Remediation-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1 — Remediates Copilot button for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RemoveCopilotButtonFromTaskbarForCurrentUser.ps1",
+        tags: ["Copilot", "AI", "Remediation"]
+    },
+    {
+        name: "Remediation-RemoveSystemRequirementsNotMetWatermark.ps1",
+        description: "Create Remediation-RemoveSystemRequirementsNotMetWatermark.ps1 — Remediates watermark.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RemoveSystemRequirementsNotMetWatermark.ps1",
+        tags: ["UX", "Watermark", "Remediation"]
+    },
+    {
+        name: "Remediation-RemoveWindowsWatermarkOnDesktopForAllUser.ps1",
+        description: "Create Remediation-RemoveWindowsWatermarkOnDesktopForAllUser.ps1 — Remediates desktop watermark for all users.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RemoveWindowsWatermarkOnDesktopForAllUser.ps1",
+        tags: ["UX", "Watermark", "Remediation"]
+    },
+    {
+        name: "Remediation-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1",
+        description: "Create Remediation-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1 — Remediates desktop watermark for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RemoveWindowsWatermarkOnDesktopForCurrentUser.ps1",
+        tags: ["UX", "Watermark", "Remediation"]
+    },
+    {
+        name: "Remediation-RemoveWslDesktopIcon.ps1",
+        description: "Hide/Remove WSL Linux icon from Desktop — Remediates WSL icon visibility.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RemoveWslDesktopIcon.ps1",
+        tags: ["WSL", "Desktop", "Remediation"]
+    },
+    {
+        name: "Remediation-RenameThisPCIcon_USER.ps1",
+        description: "Rename THIS PC to match the Hostname — Remediates PC icon naming.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-RenameThisPCIcon_USER.ps1",
+        tags: ["UX", "Naming", "Remediation"]
+    },
+    {
+        name: "Remediation-SaveSentItemsInSharedMailbox.ps1",
+        description: "Update from the upstream — Remediates sent items saving in shared mailbox.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SaveSentItemsInSharedMailbox.ps1",
+        tags: ["Mail", "Exchange", "Remediation"]
+    },
+    {
+        name: "Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        description: "Update Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1 — Remediates Defender scanning status.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+        tags: ["Security", "Defender", "Remediation"]
+    },
+    {
+        name: "Remediation-SetupBraveBrowser.ps1",
+        description: "Update via Upstream — Remediates Brave Browser setup.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SetupBraveBrowser.ps1",
+        tags: ["Browser", "Brave", "Remediation"]
+    },
+    {
+        name: "Remediation-SetupMicrosoftEdgeBrowser.ps1",
+        description: "Update via Upstream — Remediates Microsoft Edge setup.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SetupMicrosoftEdgeBrowser.ps1",
+        tags: ["Browser", "Edge", "Remediation"]
+    },
+    {
+        name: "Remediation-ShowThisPCIcon_USER.ps1",
+        description: "Show THIS PC on Users Desktop — Remediates This PC icon visibility.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-ShowThisPCIcon_USER.ps1",
+        tags: ["UX", "Desktop", "Remediation"]
+    },
+    {
+        name: "Remediation-SystemWPADOverride.ps1",
+        description: "Update via upstream repo — Remediates system WPAD override.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-SystemWPADOverride.ps1",
+        tags: ["Network", "WPAD", "Remediation"]
+    },
+    {
+        name: "Remediation-TeamsFirewallPerUser.ps1",
+        description: "Update via upstream — Remediates Teams firewall per-user settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TeamsFirewallPerUser.ps1",
+        tags: ["Teams", "Firewall", "Remediation"]
+    },
+    {
+        name: "Remediation-TeamsQos.ps1",
+        description: "Update via upstream — Remediates Teams QoS settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TeamsQos.ps1",
+        tags: ["Teams", "QoS", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOffPhoneLinkForCurrentUser.ps1",
+        description: "Create Remediation-TurnOffPhoneLinkForCurrentUser.ps1 — Remediates Phone Link for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOffPhoneLinkForCurrentUser.ps1",
+        tags: ["Apps", "Phone Link", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOffUseCellularWhenWiFiIsPoor.ps1",
+        description: "Create Remediation-TurnOffUseCellularWhenWiFiIsPoor.ps1 — Remediates cellular fallback.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOffUseCellularWhenWiFiIsPoor.ps1",
+        tags: ["Network", "Cellular", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOnAutoEndTasksForAllUsers.ps1",
+        description: "Update from the upstream repository — Remediates auto-end tasks setting.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOnAutoEndTasksForAllUsers.ps1",
+        tags: ["Performance", "Tasks", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOnCoreIsolationMemoryIntegrity.ps1",
+        description: "Update from the upstream repository — Remediates memory integrity.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOnCoreIsolationMemoryIntegrity.ps1",
+        tags: ["Security", "Memory", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1",
+        description: "Create Remediation-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1 — Remediates LSA protection without UEFI lock.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOnLocalSecurityAuthorityProtectionWithoutUefiLock.ps1",
+        tags: ["Security", "LSA", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOnPhoneLinkForCurrentUser.ps1",
+        description: "Create Remediation-TurnOnPhoneLinkForCurrentUser.ps1 — Remediates Phone Link for current user.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOnPhoneLinkForCurrentUser.ps1",
+        tags: ["Apps", "Phone Link", "Remediation"]
+    },
+    {
+        name: "Remediation-TurnOnUseCellularWhenWiFiIsPoor.ps1",
+        description: "Create Remediation-TurnOnUseCellularWhenWiFiIsPoor.ps1 — Remediates cellular fallback.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-TurnOnUseCellularWhenWiFiIsPoor.ps1",
+        tags: ["Network", "Cellular", "Remediation"]
+    },
+    {
+        name: "Remediation-UACAlwaysNotify.ps1",
+        description: "Create Remediation-UACAlwaysNotify.ps1 — Remediates UAC always notify setting.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-UACAlwaysNotify.ps1",
+        tags: ["Security", "UAC", "Remediation"]
+    },
+    {
+        name: "Remediation-UACDefault.ps1",
+        description: "Create Remediation-UACDefault.ps1 — Remediates default UAC setting.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-UACDefault.ps1",
+        tags: ["Security", "UAC", "Remediation"]
+    },
+    {
+        name: "Remediation-UACDoNotDim.ps1",
+        description: "Create Remediation-UACDoNotDim.ps1 — Remediates UAC dim setting.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-UACDoNotDim.ps1",
+        tags: ["Security", "UAC", "Remediation"]
+    },
+    {
+        name: "Remediation-UptimeToLong.ps1",
+        description: "Update from the upstream Repo — Remediates long system uptime.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-UptimeToLong.ps1",
+        tags: ["System", "Uptime", "Remediation"]
+    },
+    {
+        name: "Remediation-UserWPADOverride.ps1",
+        description: "Update via upstream repo — Remediates user WPAD override.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-UserWPADOverride.ps1",
+        tags: ["Network", "WPAD", "Remediation"]
+    },
+    {
+        name: "Remediation-VSthroughMUUpdates.ps1",
+        description: "Update via upstream — Remediates Visual Studio updates through Microsoft Update.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-VSthroughMUUpdates.ps1",
+        tags: ["Updates", "Visual Studio", "Remediation"]
+    },
+    {
+        name: "Remediation-WOLSurfaceStudio2.ps1",
+        description: "Update from the upstream — Remediates Wake-on-LAN for Surface Studio 2.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-WOLSurfaceStudio2.ps1",
+        tags: ["Power", "WOL", "Remediation"]
+    },
+    {
+        name: "Remediation-WindowsExplorerSettings.ps1",
+        description: "Refactor — Remediates Windows Explorer settings.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-WindowsExplorerSettings.ps1",
+        tags: ["UX", "Explorer", "Remediation"]
+    },
+    {
+        name: "Remediation-WlanfixForWindows11Release24H2.ps1",
+        description: "Update via Upstream — Remediates Wi-Fi fix for Windows 11 24H2.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-WlanfixForWindows11Release24H2.ps1",
+        tags: ["Network", "Wi-Fi", "Remediation"]
+    },
+    {
+        name: "Remediation-localAdminEnabled.ps1",
+        description: "Update via upstream Repo — Remediates local admin enabled status.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-localAdminEnabled.ps1",
+        tags: ["Security", "Admin", "Remediation"]
+    },
+    {
+        name: "Remediation-localAdminName.ps1",
+        description: "Update via upstream Repo — Remediates local admin account name.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation-localAdminName.ps1",
+        tags: ["Security", "Admin", "Remediation"]
+    },
+    {
+        name: "Remediation_StarfaceAutoUpdateFeature.ps1",
+        description: "Update via Upstream — Remediates Starface auto-update feature.",
+        path: "scripts/Intune/ProactiveRemediations/Remediation_StarfaceAutoUpdateFeature.ps1",
+        tags: ["Apps", "Starface", "Remediation"]
+    },
+    {
+        name: "readme.md",
+        description: "Update via upstream — Documentation for all Intune Proactive Remediation scripts.",
+        path: "scripts/Intune/ProactiveRemediations/readme.md",
+        tags: ["Documentation", "Guide"]
+    },
+    {
+        name: "remediate-LsaHardening.ps1",
+        description: "Update via Upstream — Remediates LSA hardening settings.",
+        path: "scripts/Intune/ProactiveRemediations/remediate-LsaHardening.ps1",
+        tags: ["Security", "LSA", "Remediation"]
+    },
+    {
+        name: "LICENSE",
+        description: "License for Intune Proactive Remediation scripts.",
+        path: "scripts/Intune/ProactiveRemediations/LICENSE",
+        tags: ["License", "Legal"]
+    }
+],
+
+            
             "Microsoft365": [
                 {
                     name: "Get-M365ServiceHealth.ps1",
