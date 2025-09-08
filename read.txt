@@ -1,0 +1,41 @@
+PowerShellVault/
+├── index.html
+├── ActiveDirectory/
+│   ├── Get-ADUserReport.ps1
+│   └── Reset-ADPassword.ps1
+├── AzureAD/
+│   └── Add-LocalDeviceAdmin.ps1
+├── BGInfo/
+│   └── Invoke-InstallCustomBGInfo.ps1
+├── BitLocker/
+│   └── Enable-BitLockerRemotely.ps1
+├── Exchange/
+│   └── Update-AddressBooks.ps1
+├── ExchangeNodeMaintenanceMode/
+│   └── Enter-MaintenanceMode.ps1
+├── ExchangeOnline/
+│   └── Get-enMailboxFolderPermission.ps1
+├── Graph/
+│   └── Get-GuestSponsorsReport.ps1
+├── Intune/
+│   └── Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1
+├── Microsoft365/
+│   └── Get-M365ServiceHealth.ps1
+├── MicrosoftTeams/
+│   └── Invoke-BootstrapTeamsPoliciesForATenant.ps1
+├── Misc/
+│   └── Get-OneDriveSizeOnDisk.ps1
+├── Office_Related/
+│   └── Optimize-OfficeInstall.ps1
+├── Skype_for_Business/
+│   └── Get-SkypeUserActivity.ps1
+├── UniFiTooling/
+│   └── Sync-UniFiDevices.ps1
+├── WSUS/
+│   └── Approve-WindowsUpdates.ps1
+├── Windows11/
+│   └── Invoke-NativeImageGeneratorTool.ps1
+├── bdc.MtrTooling/
+│   └── Deploy-MTRConfiguration.ps1
+└── bdcBusylight/
+    └── Set-BusylightStatus.ps1

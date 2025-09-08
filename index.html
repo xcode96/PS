@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerShell Script Vault — Dark Edition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #252526;
+            --text-primary: #d4d4d4;
+            --text-secondary: #9cdcfe;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --border: #3e3e42;
+            --card-bg: #2d2d30;
+            --tag-bg: #3a3a3d;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-header h2 {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .folder-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            width: 100%;
+            text-align: left;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            margin-bottom: 0.25rem;
+        }
+
+        .folder-btn:hover, .folder-btn.active {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .folder-btn i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 250px;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+            }
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                background: var(--accent);
+                color: #000;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                z-index: 200;
+                cursor: pointer;
+            }
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent), #79c0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #b8b8b8;
+            max-width: 800px;
+        }
+
+        /* Search Bar */
+        .search-box {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            padding-left: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        /* Script Counter */
+        .script-counter {
+            font-size: 0.9rem;
+            color: #888;
+            margin: 0.5rem 0 1.5rem;
+            padding-left: 2.5rem;
+            font-style: italic;
+        }
+
+        /* Scripts Grid */
+        .script-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .script-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .script-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .script-title i {
+            color: var(--accent);
+        }
+
+        .script-desc {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .script-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: #ddd;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .script-actions {
+            display: flex;
+            gap: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .script-card:hover .script-actions {
+            opacity: 1;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-download {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-download:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-copy {
+            background: #444;
+            color: #fff;
+        }
+
+        .btn-copy:hover {
+            background: #555;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #777;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 1.5rem 1rem;
+            }
+            .script-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Code Modal */
+        #codeModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        #modalContent {
+            background: #252526;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #modalHeader {
+            padding: 16px 20px;
+            background: #1e1e1e;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #modalTitle {
+            color: #d4d4d4;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        #modalActions button {
+            background: #58a6ff;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        #modalActions button:last-child {
+            background: #444;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            margin-right: 0;
+        }
+
+        #modalBody {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #1e1e1e;
+        }
+
+        #codeContent {
+            margin: 0;
+            padding: 16px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre;
+        }
+
+        #loadingIndicator {
+            text-align: center;
+            color: #9cdcfe;
+            padding: 40px;
+            font-size: 1.2rem;
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #58a6ff;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-folder"></i> Categories</h2>
+        </div>
+        <button class="folder-btn active" data-folder="all">
+            <i class="fas fa-layer-group"></i> All Scripts
+        </button>
+        <button class="folder-btn" data-folder="ActiveDirectory">
+            <i class="fas fa-network-wired"></i> ActiveDirectory
+        </button>
+        <button class="folder-btn" data-folder="AdvancedInstaller">
+            <i class="fas fa-cogs"></i> AdvancedInstaller
+        </button>
+        <button class="folder-btn" data-folder="AzureAD">
+            <i class="fab fa-microsoft"></i> AzureAD
+        </button>
+        <button class="folder-btn" data-folder="BGInfo">
+            <i class="fas fa-desktop"></i> BGInfo
+        </button>
+        <button class="folder-btn" data-folder="BitLocker">
+            <i class="fas fa-lock"></i> BitLocker
+        </button>
+        <button class="folder-btn" data-folder="Exchange">
+            <i class="fas fa-envelope"></i> Exchange
+        </button>
+        <button class="folder-btn" data-folder="ExchangeNodeMaintenanceMode">
+            <i class="fas fa-server"></i> ExchangeNodeMaintenanceMode
+        </button>
+        <button class="folder-btn" data-folder="ExchangeOnline">
+            <i class="fas fa-cloud"></i> ExchangeOnline
+        </button>
+        <button class="folder-btn" data-folder="Graph">
+            <i class="fas fa-project-diagram"></i> Graph
+        </button>
+        <button class="folder-btn" data-folder="Intune">
+            <i class="fas fa-mobile-alt"></i> Intune
+        </button>
+        <button class="folder-btn" data-folder="Microsoft365">
+            <i class="fab fa-microsoft"></i> Microsoft365
+        </button>
+        <button class="folder-btn" data-folder="MicrosoftTeams">
+            <i class="fab fa-teamspeak"></i> MicrosoftTeams
+        </button>
+        <button class="folder-btn" data-folder="Misc">
+            <i class="fas fa-ellipsis-h"></i> Misc
+        </button>
+        <button class="folder-btn" data-folder="Office_Related">
+            <i class="far fa-file-word"></i> Office_Related
+        </button>
+        <button class="folder-btn" data-folder="Skype_for_Business">
+            <i class="fas fa-phone"></i> Skype_for_Business
+        </button>
+        <button class="folder-btn" data-folder="UniFiTooling">
+            <i class="fas fa-wifi"></i> UniFiTooling
+        </button>
+        <button class="folder-btn" data-folder="WSUS">
+            <i class="fas fa-sync"></i> WSUS
+        </button>
+        <button class="folder-btn" data-folder="Windows11">
+            <i class="fab fa-windows"></i> Windows11
+        </button>
+        <button class="folder-btn" data-folder="bdc.MtrTooling">
+            <i class="fas fa-tools"></i> bdc.MtrTooling
+        </button>
+        <button class="folder-btn" data-folder="bdcBusylight">
+            <i class="fas fa-lightbulb"></i> bdcBusylight
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <header>
+            <h1><i class="fas fa-code"></i> PowerShell Script Vault</h1>
+            <p class="subtitle">
+                Curated open-source scripts for SysAdmins & DevOps. Dark theme. Zero tracking. MIT Licensed.
+            </p>
+        </header>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search scripts by name or description...">
+        </div>
+
+        <div class="script-counter" id="scriptCounter">
+            Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> scripts
+        </div>
+
+        <div class="scripts-container" id="scriptsContainer">
+            <!-- Scripts injected here -->
+        </div>
+
+        <footer>
+            &copy; 2025 PowerShell Vault | MIT Licensed | <a href="#" style="color: var(--accent);">Contribute on GitHub</a>
+        </footer>
+    </main>
+
+    <!-- Code Modal -->
+    <div id="codeModal">
+        <div id="modalContent">
+            <div id="modalHeader">
+                <h3 id="modalTitle">Script Title</h3>
+                <div id="modalActions">
+                    <button id="copyCodeBtn"><i class="fas fa-copy"></i> Copy Code</button>
+                    <button id="closeModalBtn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div id="modalBody">
+                <div id="loadingIndicator"><i class="fas fa-spinner fa-spin"></i> Loading script...</div>
+                <pre id="codeContent"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Folder metadata
+        const folderMetadata = {
+            "ActiveDirectory": { message: "Minor rework", updated: "3 years ago", status: "old" },
+            "AdvancedInstaller": { message: "Spring cleaning: Fix some Naming issues", updated: "5 years ago", status: "old" },
+            "AzureAD": { message: "Create Add-LocalDeviceAdmin.ps1", updated: "2 years ago", status: "stale" },
+            "BGInfo": { message: "Create Invoke-InstallCustomBGInfo.ps1", updated: "2 years ago", status: "stale" },
+            "BitLocker": { message: "Minor rework", updated: "3 years ago", status: "old" },
+            "Exchange": { message: "Force an update of all Exchange Address books", updated: "3 years ago", status: "old" },
+            "ExchangeNodeMaintenanceMode": { message: "Final touches", updated: "5 years ago", status: "old" },
+            "ExchangeOnline": { message: "Update Get-enMailboxFolderPermission.ps1", updated: "2 years ago", status: "stale" },
+            "Graph": { message: "Report the Sponsors of Entra ID Guest Accounts", updated: "4 months ago", status: "fresh" },
+            "Intune": { message: "Update Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1", updated: "3 months ago", status: "fresh" },
+            "Microsoft365": { message: "Rename to Microsoft365", updated: "4 months ago", status: "fresh" },
+            "MicrosoftTeams": { message: "Create Invoke-BootstrapTeamsPoliciesForATenant.ps1", updated: "2 years ago", status: "stale" },
+            "Misc": { message: "Create Get-OneDriveSizeOnDisk.ps1", updated: "3 months ago", status: "fresh" },
+            "Office_Related": { message: "Minor rework", updated: "3 years ago", status: "old" },
+            "Skype_for_Business": { message: "Spring cleaning", updated: "4 years ago", status: "old" },
+            "UniFiTooling": { message: "Final touches", updated: "5 years ago", status: "old" },
+            "WSUS": { message: "Minor rework", updated: "3 years ago", status: "old" },
+            "Windows11": { message: "Create Invoke-NativeImageGeneratorTool.ps1", updated: "3 months ago", status: "fresh" },
+            "bdc.MtrTooling": { message: "Final touches", updated: "5 years ago", status: "old" },
+            "bdcBusylight": { message: "Initial commit", updated: "Not specified", status: "unknown" }
+        };
+
+        // Scripts
+        const scripts = {
+            "ActiveDirectory": [
+                {
+                    name: "Convert-ADDistinguishedNameForAllUser.ps1",
+                    description: "Minor rework — Converts Distinguished Names for all AD users.",
+                    path: "scripts/ActiveDirectory/Convert-ADDistinguishedNameForAllUser.ps1",
+                    tags: ["AD", "User Management", "Intermediate"]
+                },
+                {
+                    name: "Copy-ADGroupUserMembership.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Copies group membership from one user to another.",
+                    path: "scripts/ActiveDirectory/Copy-ADGroupUserMembership.ps1",
+                    tags: ["AD", "Group Management", "Advanced"]
+                },
+                {
+                    name: "Copy-ADUserGroupMembership.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Copies user group membership to another user.",
+                    path: "scripts/ActiveDirectory/Copy-ADUserGroupMembership.ps1",
+                    tags: ["AD", "User Management", "Advanced"]
+                },
+                {
+                    name: "Copy-ADUserGroupMembershipSimple.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Simple version of user group membership copy.",
+                    path: "scripts/ActiveDirectory/Copy-ADUserGroupMembershipSimple.ps1",
+                    tags: ["AD", "User Management", "Beginner"]
+                },
+                {
+                    name: "Export-ADSyncConnectorInformation.ps1",
+                    description: "Export ADSync Connector Information — Exports Azure AD Connect sync connector details.",
+                    path: "scripts/ActiveDirectory/Export-ADSyncConnectorInformation.ps1",
+                    tags: ["AD", "Azure AD Connect", "Reporting"]
+                },
+                {
+                    name: "Find-enADDuplicateServicePrincipalName.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Finds duplicate SPNs in Active Directory.",
+                    path: "scripts/ActiveDirectory/Find-enADDuplicateServicePrincipalName.ps1",
+                    tags: ["AD", "Security", "Advanced"]
+                },
+                {
+                    name: "Get-ADUserLockout.ps1",
+                    description: "Minor rework — Gets lockout status and source for AD users.",
+                    path: "scripts/ActiveDirectory/Get-ADUserLockout.ps1",
+                    tags: ["AD", "Security", "Troubleshooting"]
+                },
+                {
+                    name: "Get-enADDNSServerInformation.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Retrieves DNS server information from AD.",
+                    path: "scripts/ActiveDirectory/Get-enADDNSServerInformation.ps1",
+                    tags: ["AD", "DNS", "Reporting"]
+                },
+                {
+                    name: "Get-enADDomainControllerInfo.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Gets detailed information about domain controllers.",
+                    path: "scripts/ActiveDirectory/Get-enADDomainControllerInfo.ps1",
+                    tags: ["AD", "Infrastructure", "Reporting"]
+                },
+                {
+                    name: "Get-enADFSMORole.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Retrieves FSMO role holders in AD forest.",
+                    path: "scripts/ActiveDirectory/Get-enADFSMORole.ps1",
+                    tags: ["AD", "Forest", "Reporting"]
+                },
+                {
+                    name: "Get-enADForestInformation.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Gets comprehensive forest information.",
+                    path: "scripts/ActiveDirectory/Get-enADForestInformation.ps1",
+                    tags: ["AD", "Forest", "Reporting"]
+                },
+                {
+                    name: "Get-enADGPOReplication.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Checks GPO replication status across domain controllers.",
+                    path: "scripts/ActiveDirectory/Get-enADGPOReplication.ps1",
+                    tags: ["AD", "GPO", "Reporting"]
+                },
+                {
+                    name: "Get-enADGroupChange.ps1",
+                    description: "Minor rework — Tracks and reports changes to AD groups.",
+                    path: "scripts/ActiveDirectory/Get-enADGroupChange.ps1",
+                    tags: ["AD", "Audit", "Reporting"]
+                },
+                {
+                    name: "Get-enADObject.ps1",
+                    description: "Minor rework — Generic function to retrieve AD objects with advanced filtering.",
+                    path: "scripts/ActiveDirectory/Get-enADObject.ps1",
+                    tags: ["AD", "Generic", "Advanced"]
+                },
+                {
+                    name: "Get-enADServicePrincipalName.ps1",
+                    description: "Minor rework — Retrieves Service Principal Names (SPNs) for AD objects.",
+                    path: "scripts/ActiveDirectory/Get-enADServicePrincipalName.ps1",
+                    tags: ["AD", "Security", "Reporting"]
+                },
+                {
+                    name: "Get-enADSiteAndSubnet.ps1",
+                    description: "Minor rework — Gets AD site and subnet information for infrastructure mapping.",
+                    path: "scripts/ActiveDirectory/Get-enADSiteAndSubnet.ps1",
+                    tags: ["AD", "Sites", "Reporting"]
+                },
+                {
+                    name: "Get-enDomainInfo.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Retrieves detailed domain information.",
+                    path: "scripts/ActiveDirectory/Get-enDomainInfo.ps1",
+                    tags: ["AD", "Domain", "Reporting"]
+                },
+                {
+                    name: "LICENSE",
+                    description: "Minor rework — License file for this script collection.",
+                    path: "scripts/ActiveDirectory/LICENSE",
+                    tags: ["Legal", "License"]
+                },
+                {
+                    name: "README.md",
+                    description: "Apply new format — Documentation and usage guide for AD scripts.",
+                    path: "scripts/ActiveDirectory/README.md",
+                    tags: ["Documentation", "Guide"]
+                },
+                {
+                    name: "Set-ADAllUserPicture.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Sets picture for all AD users from a source.",
+                    path: "scripts/ActiveDirectory/Set-ADAllUserPicture.ps1",
+                    tags: ["AD", "User Management", "Bulk Operation"]
+                },
+                {
+                    name: "Set-ADServerUsage.ps1",
+                    description: "Minor rework — Optimizes AD server resource allocation based on usage patterns.",
+                    path: "scripts/ActiveDirectory/Set-ADServerUsage.ps1",
+                    tags: ["AD", "Performance", "Optimization"]
+                }
+            ],
+            "AdvancedInstaller": [
+                {
+                    name: "Build-InstallerPackage.ps1",
+                    description: "Spring cleaning: Fix some Naming issues — Automates Advanced Installer packaging workflow.",
+                    path: "scripts/AdvancedInstaller/Build-InstallerPackage.ps1",
+                    tags: ["Packaging", "Intermediate"]
+                }
+            ],
+            "AzureAD": [
+                {
+                    name: "Add-LocalDeviceAdmin.ps1",
+                    description: "Create Add-LocalDeviceAdmin.ps1 — Adds Azure AD user as local administrator on enrolled Windows devices.",
+                    path: "scripts/AzureAD/Add-LocalDeviceAdmin.ps1",
+                    tags: ["Device Management", "Beginner"]
+                }
+            ],
+            "BGInfo": [
+                {
+                    name: "Invoke-InstallCustomBGInfo.ps1",
+                    description: "Create Invoke-InstallCustomBGInfo.ps1 — Installs and configures custom BGInfo setup.",
+                    path: "scripts/BGInfo/Invoke-InstallCustomBGInfo.ps1",
+                    tags: ["Desktop", "Beginner"]
+                }
+            ],
+            "BitLocker": [
+                {
+                    name: "Enable-BitLockerRemotely.ps1",
+                    description: "Minor rework — Enables BitLocker encryption on remote devices with logging.",
+                    path: "scripts/BitLocker/Enable-BitLockerRemotely.ps1",
+                    tags: ["Security", "Intermediate", "Requires Admin"]
+                }
+            ],
+            "Exchange": [
+                {
+                    name: "Update-AddressBooks.ps1",
+                    description: "Force an update of all Exchange Address books — Immediately refreshes GAL and OAB.",
+                    path: "scripts/Exchange/Update-AddressBooks.ps1",
+                    tags: ["Mail", "Advanced", "Requires Admin"]
+                }
+            ],
+            "ExchangeNodeMaintenanceMode": [
+                {
+                    name: "Enter-MaintenanceMode.ps1",
+                    description: "Final touches — Safely puts Exchange node into maintenance mode with health checks.",
+                    path: "scripts/ExchangeNodeMaintenanceMode/Enter-MaintenanceMode.ps1",
+                    tags: ["Maintenance", "Advanced", "Requires Admin"]
+                }
+            ],
+            "ExchangeOnline": [
+                {
+                    name: "Get-enMailboxFolderPermission.ps1",
+                    description: "Update Get-enMailboxFolderPermission.ps1 — Gets folder-level permissions for Exchange Online mailboxes.",
+                    path: "scripts/ExchangeOnline/Get-enMailboxFolderPermission.ps1",
+                    tags: ["Mail", "Intermediate", "Graph API"]
+                }
+            ],
+            "Graph": [
+                {
+                    name: "Get-GuestSponsorsReport.ps1",
+                    description: "Report the Sponsors of Entra ID Guest Accounts — Uses Microsoft Graph API.",
+                    path: "scripts/Graph/Get-GuestSponsorsReport.ps1",
+                    tags: ["Reporting", "Beginner", "Graph API"]
+                }
+            ],
+            "Intune": [
+                {
+                    name: "Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+                    description: "Update Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1 — Disables Defender scanning of removable drives.",
+                    path: "scripts/Intune/Remediation-SetDefenderDisableRemovableDriveScanningOff.ps1",
+                    tags: ["Security", "Intermediate", "Intune"]
+                }
+            ],
+            "Microsoft365": [
+                {
+                    name: "Get-M365ServiceHealth.ps1",
+                    description: "Rename to Microsoft365 — Gets Microsoft 365 service health status via Graph API.",
+                    path: "scripts/Microsoft365/Get-M365ServiceHealth.ps1",
+                    tags: ["Monitoring", "Beginner", "Graph API"]
+                }
+            ],
+            "MicrosoftTeams": [
+                {
+                    name: "Invoke-BootstrapTeamsPoliciesForATenant.ps1",
+                    description: "Create Invoke-BootstrapTeamsPoliciesForATenant.ps1 — Bootstraps Teams policies across tenant.",
+                    path: "scripts/MicrosoftTeams/Invoke-BootstrapTeamsPoliciesForATenant.ps1",
+                    tags: ["Teams", "Advanced", "Requires Admin"]
+                }
+            ],
+            "Misc": [
+                {
+                    name: "Get-OneDriveSizeOnDisk.ps1",
+                    description: "Create Get-OneDriveSizeOnDisk.ps1 — Calculates size of OneDrive folder on local disk.",
+                    path: "scripts/Misc/Get-OneDriveSizeOnDisk.ps1",
+                    tags: ["Storage", "Beginner"]
+                }
+            ],
+            "Office_Related": [
+                {
+                    name: "Optimize-OfficeInstall.ps1",
+                    description: "Minor rework — Optimizes Office installation and disables telemetry.",
+                    path: "scripts/Office_Related/Optimize-OfficeInstall.ps1",
+                    tags: ["Office", "Beginner"]
+                }
+            ],
+            "Skype_for_Business": [
+                {
+                    name: "Get-SkypeUserActivity.ps1",
+                    description: "Spring cleaning — Reports user activity in Skype for Business.",
+                    path: "scripts/Skype_for_Business/Get-SkypeUserActivity.ps1",
+                    tags: ["Skype", "Reporting", "Intermediate"]
+                }
+            ],
+            "UniFiTooling": [
+                {
+                    name: "Sync-UniFiDevices.ps1",
+                    description: "Final touches — Syncs UniFi device inventory with CMDB.",
+                    path: "scripts/UniFiTooling/Sync-UniFiDevices.ps1",
+                    tags: ["Networking", "Advanced", "API"]
+                }
+            ],
+            "WSUS": [
+                {
+                    name: "Approve-WindowsUpdates.ps1",
+                    description: "Minor rework — Automatically approves critical Windows updates in WSUS.",
+                    path: "scripts/WSUS/Approve-WindowsUpdates.ps1",
+                    tags: ["Updates", "Intermediate", "Requires Admin"]
+                }
+            ],
+            "Windows11": [
+                {
+                    name: "Invoke-NativeImageGeneratorTool.ps1",
+                    description: "Create Invoke-NativeImageGeneratorTool.ps1 — Runs Windows 11 native image generator for performance.",
+                    path: "scripts/Windows11/Invoke-NativeImageGeneratorTool.ps1",
+                    tags: ["Performance", "Advanced", "Requires Admin"]
+                }
+            ],
+            "bdc.MtrTooling": [
+                {
+                    name: "Deploy-MTRConfiguration.ps1",
+                    description: "Final touches — Deploys Microsoft Teams Room configurations.",
+                    path: "scripts/bdc.MtrTooling/Deploy-MTRConfiguration.ps1",
+                    tags: ["Teams", "Deployment", "Advanced"]
+                }
+            ],
+            "bdcBusylight": [
+                {
+                    name: "Set-BusylightStatus.ps1",
+                    description: "Initial commit — Controls busylight devices based on calendar status.",
+                    path: "scripts/bdcBusylight/Set-BusylightStatus.ps1",
+                    tags: ["Hardware", "Integration", "Beginner"]
+                }
+            ]
+        };
+
+        // Flatten for "All Scripts"
+        scripts["all"] = Object.values(scripts).flat();
+
+        // DOM Elements
+        const container = document.getElementById('scriptsContainer');
+        const folderButtons = document.querySelectorAll('.folder-btn');
+        const searchInput = document.getElementById('searchInput');
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const codeModal = document.getElementById('codeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const codeContent = document.getElementById('codeContent');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const copyCodeBtn = document.getElementById('copyCodeBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Toggle sidebar on mobile
+        menuToggle?.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Modal functions
+        closeModalBtn.addEventListener('click', () => {
+            codeModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === codeModal) {
+                codeModal.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                codeModal.style.display = 'none';
+            }
+        });
+
+        copyCodeBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(codeContent.textContent).then(() => {
+                showToast('📋 Code copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+
+        // Show toast notification
+        function showToast(message) {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    background: #58a6ff;
+                    color: #000;
+                    padding: 12px 24px;
+                    border-radius: 6px;
+                    font-weight: 500;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                    z-index: 1000;
+                    transform: translateX(120%);
+                    transition: transform 0.3s ease-out;
+                `;
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.style.transform = 'translateX(0)';
+            setTimeout(() => {
+                toast.style.transform = 'translateX(120%)';
+            }, 2500);
+        }
+
+        // View Code Function
+        async function viewCode(path, name) {
+            modalTitle.textContent = name;
+            loadingIndicator.style.display = 'block';
+            codeContent.style.display = 'none';
+            codeContent.textContent = '';
+            codeModal.style.display = 'flex';
+
+            try {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error('File not found');
+                
+                const code = await response.text();
+                codeContent.textContent = code;
+                loadingIndicator.style.display = 'none';
+                codeContent.style.display = 'block';
+            } catch (error) {
+                loadingIndicator.style.display = 'none';
+                codeContent.style.display = 'block';
+                codeContent.textContent = `Error loading file: ${error.message}\n\nPlease ensure the file exists at: ${path}`;
+                codeContent.style.color = '#ff5555';
+            }
+        }
+
+        // Render Scripts with Counter
+        function renderScripts(scriptList) {
+            container.innerHTML = '';
+
+            const totalCount = Object.values(scripts)
+                .filter(arr => Array.isArray(arr))
+                .reduce((sum, arr) => sum + arr.length, 0);
+            
+            document.getElementById('visibleCount').textContent = scriptList.length;
+            document.getElementById('totalCount').textContent = totalCount;
+
+            if (scriptList.length === 0) {
+                container.innerHTML = `<div class="empty-state">🔍 No scripts match your search.</div>`;
+                return;
+            }
+
+            const grid = document.createElement('div');
+            grid.className = 'script-grid';
+
+            scriptList.forEach(script => {
+                const card = document.createElement('div');
+                card.className = 'script-card';
+
+                let tagsHTML = '';
+                if (script.tags) {
+                    tagsHTML = script.tags.map(tag => {
+                        return `<span class="tag">${tag}</span>`;
+                    }).join('');
+                }
+
+                card.innerHTML = `
+                    <div class="script-title">
+                        <i class="fas fa-file-code"></i>
+                        ${script.name}
+                    </div>
+                    <p class="script-desc">${script.description}</p>
+                    <div class="script-meta">
+                        ${tagsHTML}
+                    </div>
+                    <div class="script-actions">
+                        <a href="${script.path}" download class="btn btn-download">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                        <button class="btn btn-copy" onclick="viewCode('${script.path}', '${script.name}')">
+                            <i class="fas fa-eye"></i> View Code
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            container.appendChild(grid);
+        }
+
+        // Filter Scripts
+        function filterScripts(category, searchTerm = '') {
+            let scriptList = scripts[category] || [];
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                scriptList = scriptList.filter(script =>
+                    script.name.toLowerCase().includes(term) ||
+                    script.description.toLowerCase().includes(term)
+                );
+            }
+
+            renderScripts(scriptList);
+        }
+
+        // Show Scripts
+        function showScripts(category) {
+            folderButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.folder === category);
+            });
+            filterScripts(category, searchInput.value);
+        }
+
+        // Event Listeners
+        folderButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                showScripts(btn.dataset.folder);
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const activeCategory = document.querySelector('.folder-btn.active')?.dataset.folder || 'all';
+            filterScripts(activeCategory, e.target.value);
+        });
+
+        // Initialize
+        showScripts('all');
+
+        // Expose viewCode to global scope
+        window.viewCode = viewCode;
+    </script>
+</body>
+</html>
