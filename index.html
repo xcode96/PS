@@ -448,8 +448,8 @@
         <button class="folder-btn" data-folder="Exchange">
             <i class="fas fa-envelope"></i> Exchange
         </button>
-        <button class="folder-btn" data-folder="ExchangeNodeMaintenanceMode">
-            <i class="fas fa-server"></i> ExchangeNodeMaintenanceMode
+        <button class="folder-btn" data-folder="Compliance">
+            <i class="fas fa-server"></i> Compliance
         </button>
         <button class="folder-btn" data-folder="ExchangeOnline">
             <i class="fas fa-cloud"></i> ExchangeOnline
@@ -475,9 +475,7 @@
         <button class="folder-btn" data-folder="Skype_for_Business">
             <i class="fas fa-phone"></i> Skype_for_Business
         </button>
-        <button class="folder-btn" data-folder="UniFiTooling">
-            <i class="fas fa-wifi"></i> UniFiTooling
-        </button>
+        
         <button class="folder-btn" data-folder="WSUS">
             <i class="fas fa-sync"></i> WSUS
         </button>
@@ -485,10 +483,11 @@
             <i class="fab fa-windows"></i> Windows11
         </button>
         <button class="folder-btn" data-folder="bdc.MtrTooling">
-            <i class="fas fa-tools"></i> bdc.MtrTooling
+            <i class="fas fa-tools"></i> Apps
         </button>
         <button class="folder-btn" data-folder="bdcBusylight">
-            <i class="fas fa-lightbulb"></i> bdcBusylight
+            <i class="fas fa-lightbulb"></i> Others
+        
         </button>
     </aside>
 
@@ -514,9 +513,7 @@
             <!-- Scripts injected here -->
         </div>
 
-        <footer>
-            &copy; 2025 PowerShell Vault | MIT Licensed | <a href="#" style="color: var(--accent);">Contribute on GitHub</a>
-        </footer>
+       
     </main>
 
     <!-- Code Modal -->
@@ -554,7 +551,6 @@
             "Misc": { message: "Create Get-OneDriveSizeOnDisk.ps1", updated: "3 months ago", status: "fresh" },
             "Office_Related": { message: "Minor rework", updated: "3 years ago", status: "old" },
             "Skype_for_Business": { message: "Spring cleaning", updated: "4 years ago", status: "old" },
-            "UniFiTooling": { message: "Final touches", updated: "5 years ago", status: "old" },
             "WSUS": { message: "Minor rework", updated: "3 years ago", status: "old" },
             "Windows11": { message: "Create Invoke-NativeImageGeneratorTool.ps1", updated: "3 months ago", status: "fresh" },
             "bdc.MtrTooling": { message: "Final touches", updated: "5 years ago", status: "old" },
@@ -839,30 +835,85 @@
         tags: ["Security", "Cleanup", "Mail Flow"]
     }
 ],
-            "ExchangeNodeMaintenanceMode": [
+            "Compliance": [
                 {
-                    name: "Enter-MaintenanceMode.ps1",
-                    description: "Final touches — Safely puts Exchange node into maintenance mode with health checks.",
-                    path: "scripts/ExchangeNodeMaintenanceMode/Enter-MaintenanceMode.ps1",
-                    tags: ["Maintenance", "Advanced", "Requires Admin"]
-                }
+  "name": "Invoke-CheckIfUnapprovedAppsAreInstalled.ps1",
+  "description": "Scans Windows devices for installed applications and checks them against a predefined approved software list. Flags or reports any unapproved applications for compliance and security monitoring.",
+  "path": "scripts/ExchangeNodeMaintenanceMode/Invoke-CheckIfUnapprovedAppsAreInstalled.ps1",
+  "tags": ["Application Control", "Compliance", "Security Monitoring", "Intermediate"]
+}
+
             ],
             "ExchangeOnline": [
-                {
-                    name: "Get-enMailboxFolderPermission.ps1",
-                    description: "Update Get-enMailboxFolderPermission.ps1 — Gets folder-level permissions for Exchange Online mailboxes.",
-                    path: "scripts/ExchangeOnline/Get-enMailboxFolderPermission.ps1",
-                    tags: ["Mail", "Intermediate", "Graph API"]
-                }
-            ],
+    {
+        name: "Approve-CASMailboxSettings.ps1",
+        description: "Minor rework — Approves and standardizes Client Access Service mailbox settings for compliance.",
+        path: "scripts/ExchangeOnline/Approve-CASMailboxSettings.ps1",
+        tags: ["Mailbox", "CAS", "Compliance"]
+    },
+    {
+        name: "Export-DistributionGroup2Cloud.ps1",
+        description: "Minor rework — Exports on-premises distribution groups to Exchange Online for hybrid migration.",
+        path: "scripts/ExchangeOnline/Export-DistributionGroup2Cloud.ps1",
+        tags: ["Migration", "Distribution Groups", "Hybrid"]
+    },
+    {
+        name: "Get-MobileDeviceReporting.ps1",
+        description: "Add Get-MobileDeviceReporting.ps1 — Generates report of all mobile devices connected to Exchange Online mailboxes.",
+        path: "scripts/ExchangeOnline/Get-MobileDeviceReporting.ps1",
+        tags: ["Mobile", "Reporting", "Audit"]
+    },
+    {
+        name: "Get-enMailboxFolderPermission.ps1",
+        description: "Update Get-enMailboxFolderPermission.ps1 — Gets folder-level permissions for Exchange Online mailboxes.",
+        path: "scripts/ExchangeOnline/Get-enMailboxFolderPermission.ps1",
+        tags: ["Permissions", "Mailbox", "Audit"]
+    },
+    {
+        name: "Get-enMailboxFolderPermissionReport.ps1",
+        description: "Minor rework — Generates comprehensive report of all mailbox folder permissions across the organization.",
+        path: "scripts/ExchangeOnline/Get-enMailboxFolderPermissionReport.ps1",
+        tags: ["Permissions", "Reporting", "Compliance"]
+    },
+    {
+        name: "Get-enMailboxPermissionReport.ps1",
+        description: "Minor rework — Reports on mailbox-level permissions including FullAccess, SendAs, and SendOnBehalf.",
+        path: "scripts/ExchangeOnline/Get-enMailboxPermissionReport.ps1",
+        tags: ["Permissions", "Reporting", "Audit"]
+    },
+    {
+        name: "Get-enMailboxSendAsReport.ps1",
+        description: "Minor rework — Lists all users with SendAs permissions on Exchange Online mailboxes.",
+        path: "scripts/ExchangeOnline/Get-enMailboxSendAsReport.ps1",
+        tags: ["Permissions", "SendAs", "Reporting"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for Exchange Online script collection.",
+        path: "scripts/ExchangeOnline/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "Search-MailboxItemDeletion.ps1",
+        description: "Minor rework — Searches for items deleted from Exchange Online mailboxes within specified date range.",
+        path: "scripts/ExchangeOnline/Search-MailboxItemDeletion.ps1",
+        tags: ["Audit", "eDiscovery", "Compliance"]
+    },
+    {
+        name: "Set-ExchangeSaveSentItemsInSharedMailbox.ps1",
+        description: "Save Sent Items in Shared Mailbox Sent Items folder — Configures shared mailboxes to save sent items in their own Sent Items folder.",
+        path: "scripts/ExchangeOnline/Set-ExchangeSaveSentItemsInSharedMailbox.ps1",
+        tags: ["Shared Mailbox", "Configuration", "Best Practice"]
+    }
+],
             "Graph": [
-                {
-                    name: "Get-GuestSponsorsReport.ps1",
-                    description: "Report the Sponsors of Entra ID Guest Accounts — Uses Microsoft Graph API.",
-                    path: "scripts/Graph/Get-GuestSponsorsReport.ps1",
-                    tags: ["Reporting", "Beginner", "Graph API"]
-                }
-            ],
+               {
+        name: "Get-GraphGuestReportsInEntra.ps1",
+        description: "Generates comprehensive reports on Entra ID guest users including creation date, last sign-in, and access levels.",
+        path: "scripts/Graph/Get-GraphGuestReportsInEntra.ps1",
+        tags: ["Reporting", "Guest Accounts", "Entra ID", "Graph API"]
+    }
+],
 
 "Intune": [
     {
@@ -2489,14 +2540,134 @@
 
 
 
-            "MicrosoftTeams": [
-                {
-                    name: "Invoke-BootstrapTeamsPoliciesForATenant.ps1",
-                    description: "Create Invoke-BootstrapTeamsPoliciesForATenant.ps1 — Bootstraps Teams policies across tenant.",
-                    path: "scripts/MicrosoftTeams/Invoke-BootstrapTeamsPoliciesForATenant.ps1",
-                    tags: ["Teams", "Advanced", "Requires Admin"]
-                }
-            ],
+           "MicrosoftTeams": [
+    {
+        name: "Clear-MicrosoftTeamsClientCache.ps1",
+        description: "Minor rework — Clears Microsoft Teams client cache to resolve performance or corruption issues.",
+        path: "scripts/MicrosoftTeams/Clear-MicrosoftTeamsClientCache.ps1",
+        tags: ["Teams", "Cleanup", "Troubleshooting"]
+    },
+    {
+        name: "Default_MicrosoftTeams_DesktopConfig.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Applies default desktop configuration for Microsoft Teams client.",
+        path: "scripts/MicrosoftTeams/Default_MicrosoftTeams_DesktopConfig.ps1",
+        tags: ["Teams", "Configuration", "Deployment"]
+    },
+    {
+        name: "Get-AllExternalTeamsApps.ps1",
+        description: "Minor rework — Lists all external (third-party) apps installed in Microsoft Teams across the tenant.",
+        path: "scripts/MicrosoftTeams/Get-AllExternalTeamsApps.ps1",
+        tags: ["Teams", "Apps", "Reporting"]
+    },
+    {
+        name: "Get-TeamsAssignedNumbers.ps1",
+        description: "Minor rework — Retrieves all assigned phone numbers for Microsoft Teams users and resource accounts.",
+        path: "scripts/MicrosoftTeams/Get-TeamsAssignedNumbers.ps1",
+        tags: ["Teams", "Telephony", "Reporting"]
+    },
+    {
+        name: "Get-TeamsServiceNumbers.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Lists all service numbers available in Microsoft Teams tenant.",
+        path: "scripts/MicrosoftTeams/Get-TeamsServiceNumbers.ps1",
+        tags: ["Teams", "Telephony", "Inventory"]
+    },
+    {
+        name: "Get-bdcMicrosoftTeamsReporting.ps1",
+        description: "Minor rework — Generates comprehensive Microsoft Teams usage and adoption reports.",
+        path: "scripts/MicrosoftTeams/Get-bdcMicrosoftTeamsReporting.ps1",
+        tags: ["Teams", "Reporting", "Analytics"]
+    },
+    {
+        name: "Invoke-BootstrapTeamsPoliciesForATenant.ps1",
+        description: "Create Invoke-BootstrapTeamsPoliciesForATenant.ps1 — Bootstraps Teams policies across tenant.",
+        path: "scripts/MicrosoftTeams/Invoke-BootstrapTeamsPoliciesForATenant.ps1",
+        tags: ["Teams", "Policy", "Deployment"]
+    },
+    {
+        name: "Invoke-OptimizeAppsForTerminalService.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Optimizes Microsoft Teams and related apps for Terminal Services/RDS environments.",
+        path: "scripts/MicrosoftTeams/Invoke-OptimizeAppsForTerminalService.ps1",
+        tags: ["Teams", "RDS", "Optimization"]
+    },
+    {
+        name: "Invoke-TweakTeamsClientFirewall.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Configures Windows Firewall rules for optimal Microsoft Teams client performance.",
+        path: "scripts/MicrosoftTeams/Invoke-TweakTeamsClientFirewall.ps1",
+        tags: ["Teams", "Firewall", "Network"]
+    },
+    {
+        name: "Invoke-mtrDisableModernAuthentication.ps1",
+        description: "Minor rework — Disables Modern Authentication for Microsoft Teams Rooms (MTR) devices for compatibility.",
+        path: "scripts/MicrosoftTeams/Invoke-mtrDisableModernAuthentication.ps1",
+        tags: ["Teams Rooms", "Authentication", "Compatibility"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for Microsoft Teams script collection.",
+        path: "scripts/MicrosoftTeams/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "New-AITMicrosoftTeams.ps1",
+        description: "Minor rework — Creates new Microsoft Teams auto attendant and call queue configurations.",
+        path: "scripts/MicrosoftTeams/New-AITMicrosoftTeams.ps1",
+        tags: ["Teams", "Auto Attendant", "Telephony"]
+    },
+    {
+        name: "ProjectTeamStructure.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Creates standardized team structures in Microsoft Teams for project management.",
+        path: "scripts/MicrosoftTeams/ProjectTeamStructure.ps1",
+        tags: ["Teams", "Templates", "Automation"]
+    },
+    {
+        name: "RemoveWiki.ps1",
+        description: "Minor rework — Removes Wiki tab from all Microsoft Teams channels for standardization.",
+        path: "scripts/MicrosoftTeams/RemoveWiki.ps1",
+        tags: ["Teams", "Cleanup", "Standardization"]
+    },
+    {
+        name: "ReplaceDomainForAllUnifiedGroups.ps1",
+        description: "Minor rework — Replaces primary domain for all Microsoft 365 Groups (Unified Groups) used by Teams.",
+        path: "scripts/MicrosoftTeams/ReplaceDomainForAllUnifiedGroups.ps1",
+        tags: ["Teams", "Groups", "Migration"]
+    },
+    {
+        name: "Set-QoSForMicrosoftTeams.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Configures Quality of Service (QoS) policies for Microsoft Teams traffic.",
+        path: "scripts/MicrosoftTeams/Set-QoSForMicrosoftTeams.ps1",
+        tags: ["Teams", "Network", "QoS"]
+    },
+    {
+        name: "Set-QoSForMicrosoftTeamsRoomDevices.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Applies QoS settings specifically for Microsoft Teams Room devices.",
+        path: "scripts/MicrosoftTeams/Set-QoSForMicrosoftTeamsRoomDevices.ps1",
+        tags: ["Teams Rooms", "Network", "QoS"]
+    },
+    {
+        name: "Set-TeamsAudioVideoPermissionInBrowser.ps1",
+        description: "Create Set-TeamsAudioVideoPermissionInBrowser.ps1 — Configures browser permissions for Teams web client audio/video access.",
+        path: "scripts/MicrosoftTeams/Set-TeamsAudioVideoPermissionInBrowser.ps1",
+        tags: ["Teams", "Browser", "Permissions"]
+    },
+    {
+        name: "SetupTeamsRoom.ps1",
+        description: "Create a Microsoft Teams Room Device in Office 365 — Automates provisioning of Teams Room devices in tenant.",
+        path: "scripts/MicrosoftTeams/SetupTeamsRoom.ps1",
+        tags: ["Teams Rooms", "Deployment", "Provisioning"]
+    },
+    {
+        name: "Update-UnifiedGroupsToTeams.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Upgrades Office 365 Groups to Microsoft Teams with standardized settings.",
+        path: "scripts/MicrosoftTeams/Update-UnifiedGroupsToTeams.ps1",
+        tags: ["Teams", "Migration", "Upgrade"]
+    },
+    {
+        name: "enable-AttendanceListMicrosoftTeams.ps1",
+        description: "Enables attendance list feature for Microsoft Teams meetings across the tenant.",
+        path: "scripts/MicrosoftTeams/enable-AttendanceListMicrosoftTeams.ps1",
+        tags: ["Teams", "Meetings", "Compliance"]
+    }
+],
            
 
 "Misc": [
@@ -3008,39 +3179,118 @@
 
 
 
+"Office_Related": [
+    {
+        name: "Force_Office_Click2Run-Update.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Forces immediate update of Office Click-to-Run installations.",
+        path: "scripts/Office_Related/Force_Office_Click2Run-Update.ps1",
+        tags: ["Office", "Updates", "Click-to-Run"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for Office_Related script collection.",
+        path: "scripts/Office_Related/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "README.md",
+        description: "Legacy Notice: On Premises related stuff will no longer be maintained! — Documentation and usage guide for Office scripts.",
+        path: "scripts/Office_Related/README.md",
+        tags: ["Documentation", "Legacy", "Guide"]
+    },
+    {
+        name: "Set-OfficeInsider.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Configures Office installation to join Insider Fast or Slow ring.",
+        path: "scripts/Office_Related/Set-OfficeInsider.ps1",
+        tags: ["Office", "Insider", "Beta"]
+    },
+    {
+        name: "Set-PreventBingInstallRegistryKey.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Prevents Bing-related components from installing with Office.",
+        path: "scripts/Office_Related/Set-PreventBingInstallRegistryKey.ps1",
+        tags: ["Office", "Bing", "Registry", "Privacy"]
+    },
+    {
+        name: "Set-PreventBingInstallRegistryKey_splat.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Advanced version using splatting to prevent Bing component installation.",
+        path: "scripts/Office_Related/Set-PreventBingInstallRegistryKey_splat.ps1",
+        tags: ["Office", "Bing", "Registry", "Privacy", "Advanced"]
+    }
+],
 
-            "Office_Related": [
-                {
-                    name: "Optimize-OfficeInstall.ps1",
-                    description: "Minor rework — Optimizes Office installation and disables telemetry.",
-                    path: "scripts/Office_Related/Optimize-OfficeInstall.ps1",
-                    tags: ["Office", "Beginner"]
-                }
-            ],
-            "Skype_for_Business": [
-                {
-                    name: "Get-SkypeUserActivity.ps1",
-                    description: "Spring cleaning — Reports user activity in Skype for Business.",
-                    path: "scripts/Skype_for_Business/Get-SkypeUserActivity.ps1",
-                    tags: ["Skype", "Reporting", "Intermediate"]
-                }
-            ],
-            "UniFiTooling": [
-                {
-                    name: "Sync-UniFiDevices.ps1",
-                    description: "Final touches — Syncs UniFi device inventory with CMDB.",
-                    path: "scripts/UniFiTooling/Sync-UniFiDevices.ps1",
-                    tags: ["Networking", "Advanced", "API"]
-                }
-            ],
-            "WSUS": [
-                {
-                    name: "Approve-WindowsUpdates.ps1",
-                    description: "Minor rework — Automatically approves critical Windows updates in WSUS.",
-                    path: "scripts/WSUS/Approve-WindowsUpdates.ps1",
-                    tags: ["Updates", "Intermediate", "Requires Admin"]
-                }
-            ],
+"Skype_for_Business": [
+    {
+        name: "Collect-CsClientLogs.ps1",
+        description: "Change Copyright year — Collects Skype for Business client logs for troubleshooting and diagnostics.",
+        path: "scripts/Skype_for_Business/Collect-CsClientLogs.ps1",
+        tags: ["Skype", "Logs", "Troubleshooting"]
+    },
+    {
+        name: "Get-CsActiveConferences.ps1",
+        description: "Change Copyright year — Retrieves list of currently active Skype for Business conferences and participants.",
+        path: "scripts/Skype_for_Business/Get-CsActiveConferences.ps1",
+        tags: ["Skype", "Conferencing", "Reporting"]
+    },
+    {
+        name: "Invoke-FindS4BUsersToDisable.ps1",
+        description: "Change Copyright year — Identifies inactive Skype for Business users for license cleanup or deprovisioning.",
+        path: "scripts/Skype_for_Business/Invoke-FindS4BUsersToDisable.ps1",
+        tags: ["Skype", "Cleanup", "License Management"]
+    },
+    {
+        name: "LICENSE",
+        description: "Change Copyright year — License file for Skype for Business script collection.",
+        path: "scripts/Skype_for_Business/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "Set-Skype4BProxyUsage.ps1",
+        description: "Change Copyright year — Configures Skype for Business client proxy settings for enterprise environments.",
+        path: "scripts/Skype_for_Business/Set-Skype4BProxyUsage.ps1",
+        tags: ["Skype", "Network", "Proxy", "Configuration"]
+    },
+    {
+        name: "Test-LyncSRVRecords.ps1",
+        description: "Change Copyright year — Tests DNS SRV records for Skype for Business (Lync) connectivity and federation.",
+        path: "scripts/Skype_for_Business/Test-LyncSRVRecords.ps1",
+        tags: ["Skype", "DNS", "Network", "Validation"]
+    },
+    {
+        name: "readme.md",
+        description: "Documentation and usage guide for Skype for Business scripts.",
+        path: "scripts/Skype_for_Business/readme.md",
+        tags: ["Documentation", "Guide", "Reference"]
+    }
+],
+
+           "WSUS": [
+   
+    {
+        name: "Approve-WSUSDefinitionUpdates.ps1",
+        description: "Minor rework — Approves definition updates (Defender, Office, etc.) in WSUS for enterprise compliance.",
+        path: "scripts/WSUS/Approve-WSUSDefinitionUpdates.ps1",
+        tags: ["Updates", "Definitions", "Security", "WSUS"]
+    },
+    {
+        name: "Approve-WSUSLicenseAgreementAcceptance.ps1",
+        description: "Minor rework — Automatically accepts license agreements for updates requiring EULA approval in WSUS.",
+        path: "scripts/WSUS/Approve-WSUSLicenseAgreementAcceptance.ps1",
+        tags: ["Updates", "EULA", "Compliance", "WSUS"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor rework — License file for WSUS script collection.",
+        path: "scripts/WSUS/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "README.md",
+        description: "Legacy Notice: On Premises related stuff will no longer be maintained! — Documentation and usage guide for WSUS scripts.",
+        path: "scripts/WSUS/README.md",
+        tags: ["Documentation", "Legacy", "Guide"]
+    }
+],
+
             "Windows11": [
     {
         name: "Invoke-ForceRemoveMicrosoft365AppAndOneNote.ps1",
@@ -3093,20 +3343,86 @@
 ],
             "bdc.MtrTooling": [
                 {
-                    name: "Deploy-MTRConfiguration.ps1",
-                    description: "Final touches — Deploys Microsoft Teams Room configurations.",
-                    path: "scripts/bdc.MtrTooling/Deploy-MTRConfiguration.ps1",
-                    tags: ["Teams", "Deployment", "Advanced"]
+                    name: "Apps Script File",
+                    description: "This project helps automate software deployment by providing common apps and tools in one place.",
+                    path: "scripts/bdc.MtrTooling/Apps.zip",
+                    tags: [" Intune, Chocolatey, Software Deployment, Automation, Endpoint Management, Windows Apps, IT Administration, Package Management  "]
                 }
             ],
-            "bdcBusylight": [
-                {
-                    name: "Set-BusylightStatus.ps1",
-                    description: "Initial commit — Controls busylight devices based on calendar status.",
-                    path: "scripts/bdcBusylight/Set-BusylightStatus.ps1",
-                    tags: ["Hardware", "Integration", "Beginner"]
-                }
-            ]
+           "bdcBusylight": [
+    {
+        name: "Set-BusylightStatus.ps1",
+        description: "Initial commit — Controls busylight devices based on calendar status.",
+        path: "scripts/bdcBusylight/Set-BusylightStatus.ps1",
+        tags: ["Hardware", "Integration", "Calendar", "Presence"]
+    },
+    {
+        name: "Add-EntraUserAsLocalGroupMember.ps1",
+        description: "Add files via upload — Adds Entra ID (Azure AD) user to local Windows group for hybrid access.",
+        path: "scripts/bdcBusylight/Add-EntraUserAsLocalGroupMember.ps1",
+        tags: ["Entra ID", "Local Groups", "Hybrid", "Access Control"]
+    },
+    {
+        name: "Bootstrap-MicrosoftDefenderConfiguration.ps1",
+        description: "Add files via upload — Bootstraps Microsoft Defender configuration with enterprise baseline settings.",
+        path: "scripts/bdcBusylight/Bootstrap-MicrosoftDefenderConfiguration.ps1",
+        tags: ["Security", "Defender", "Baseline", "Hardening"]
+    },
+    {
+        name: "Client_GPO.ps1",
+        description: "Add files via upload — Applies client-side Group Policy settings for enterprise desktop standardization.",
+        path: "scripts/bdcBusylight/Client_GPO.ps1",
+        tags: ["GPO", "Client", "Configuration", "Standardization"]
+    },
+    {
+        name: "Detect - WebRTC - Detection Script - 0.2.3.ps1",
+        description: "Add files via upload — Detects WebRTC settings and potential privacy leaks in browsers.",
+        path: "scripts/bdcBusylight/Detect - WebRTC - Detection Script - 0.2.3.ps1",
+        tags: ["WebRTC", "Privacy", "Detection", "Browser"]
+    },
+    {
+        name: "Edge_REG.ps1",
+        description: "Add files via upload — Configures Microsoft Edge browser settings via registry for enterprise deployment.",
+        path: "scripts/bdcBusylight/Edge_REG.ps1",
+        tags: ["Edge", "Registry", "Browser", "Configuration"]
+    },
+    {
+        name: "ExchangeUM_GPO.ps1",
+        description: "Add files via upload — Configures Group Policy for Exchange Unified Messaging client settings.",
+        path: "scripts/bdcBusylight/ExchangeUM_GPO.ps1",
+        tags: ["Exchange", "Unified Messaging", "GPO", "Configuration"]
+    },
+    {
+        name: "Get-DeviceAutoPilotInfo.ps1",
+        description: "Add files via upload — Retrieves device information required for Windows Autopilot enrollment.",
+        path: "scripts/bdcBusylight/Get-DeviceAutoPilotInfo.ps1",
+        tags: ["Autopilot", "Device Registration", "Intune", "Deployment"]
+    },
+    {
+        name: "InstallpendingWindowsUpdates.ps1",
+        description: "Add files via upload — Installs all pending Windows Updates with logging and reboot handling.",
+        path: "scripts/bdcBusylight/InstallpendingWindowsUpdates.ps1",
+        tags: ["Updates", "Windows", "Automation", "Patch Management"]
+    },
+    {
+        name: "Remediate - WebRTC - Remediation Script - 0.2.8.ps1",
+        description: "Add files via upload — Remediates WebRTC privacy settings in browsers to prevent IP leakage.",
+        path: "scripts/bdcBusylight/Remediate - WebRTC - Remediation Script - 0.2.8.ps1",
+        tags: ["WebRTC", "Privacy", "Remediation", "Browser"]
+    },
+    {
+        name: "Server_GPO.ps1",
+        description: "Add files via upload — Applies server-side Group Policy settings for enterprise server standardization.",
+        path: "scripts/bdcBusylight/Server_GPO.ps1",
+        tags: ["GPO", "Server", "Configuration", "Standardization"]
+    },
+    {
+        name: "Skype_Server_Config.ps1",
+        description: "Add files via upload — Configures Skype for Business Server settings for enterprise deployment.",
+        path: "scripts/bdcBusylight/Skype_Server_Config.ps1",
+        tags: ["Skype", "Server", "Configuration", "Deployment"]
+    }
+],
         };
 
         // Flatten for "All Scripts"
