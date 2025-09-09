@@ -2324,16 +2324,171 @@
         tags: ["License", "Legal"]
     }
 ],
-
+           "Microsoft365": [
+    {
+        name: "ConditionalAccessNamedLocationToolingForGraph.ps1",
+        description: "Manages Named Locations for Conditional Access policies using Microsoft Graph API.",
+        path: "scripts/Microsoft365/ConditionalAccessNamedLocationToolingForGraph.ps1",
+        tags: ["Security", "Conditional Access", "Graph API"]
+    },
+    {
+        name: "Convert-HolidayFromApiToCsAutoAttendantHolidays.ps1",
+        description: "Converts public holiday data from API into Teams Auto Attendant holiday schedules.",
+        path: "scripts/Microsoft365/Convert-HolidayFromApiToCsAutoAttendantHolidays.ps1",
+        tags: ["Teams", "Automation", "Holiday Scheduling"]
+    },
+    {
+        name: "ConvertFrom-SafeLinksURL.ps1",
+        description: "Decodes Microsoft Defender Safe Links URLs to reveal original destination.",
+        path: "scripts/Microsoft365/ConvertFrom-SafeLinksURL.ps1",
+        tags: ["Security", "Safe Links", "URL Decoding"]
+    },
+    {
+        name: "Convert_O365_SKUs_and_Services.ps1",
+        description: "Converts Office 365 SKU IDs and service plans into human-readable names for reporting.",
+        path: "scripts/Microsoft365/Convert_O365_SKUs_and_Services.ps1",
+        tags: ["Licensing", "Reporting", "SKU Mapping"]
+    },
+    {
+        name: "Disable-AzAccountLinkingExperience.ps1",
+        description: "Disables Azure account linking experience to prevent unintended tenant switching.",
+        path: "scripts/Microsoft365/Disable-AzAccountLinkingExperience.ps1",
+        tags: ["Azure", "Security", "Account Management"]
+    },
+    {
+        name: "Find-AdminAssignedLicenses.ps1",
+        description: "Finds all licenses assigned directly to admin accounts for compliance auditing.",
+        path: "scripts/Microsoft365/Find-AdminAssignedLicenses.ps1",
+        tags: ["Compliance", "Licensing", "Audit"]
+    },
+    {
+        name: "FixPersonalSPOSite.ps1",
+        description: "Repairs or re-provisions personal OneDrive/SharePoint sites for users.",
+        path: "scripts/Microsoft365/FixPersonalSPOSite.ps1",
+        tags: ["SharePoint", "OneDrive", "Remediation"]
+    },
+    {
+        name: "Get-MFAUserReport.ps1",
+        description: "Generates report of MFA enrollment and authentication methods for all users.",
+        path: "scripts/Microsoft365/Get-MFAUserReport.ps1",
+        tags: ["Security", "MFA", "Reporting"]
+    },
+    {
+        name: "Get-Microsoft365LicenseIdNames.ps1",
+        description: "Retrieves human-readable names for Microsoft 365 license SKUs and service plans.",
+        path: "scripts/Microsoft365/Get-Microsoft365LicenseIdNames.ps1",
+        tags: ["Licensing", "SKU", "Reference"]
+    },
+    {
+        name: "Get-MicrosoftCloudTenantInfo.ps1",
+        description: "Retrieves tenant information including domains, SKUs, and configuration settings.",
+        path: "scripts/Microsoft365/Get-MicrosoftCloudTenantInfo.ps1",
+        tags: ["Tenant", "Discovery", "Reporting"]
+    },
+    {
+        name: "Get-MicrosoftWhiteboardReport.ps1",
+        description: "Generates usage and ownership report for Microsoft Whiteboard in your tenant.",
+        path: "scripts/Microsoft365/Get-MicrosoftWhiteboardReport.ps1",
+        tags: ["Whiteboard", "Reporting", "Governance"]
+    },
+    {
+        name: "Get-O365MailboxServerDatacenterLocation.ps1",
+        description: "Identifies the physical datacenter location for Exchange Online mailboxes.",
+        path: "scripts/Microsoft365/Get-O365MailboxServerDatacenterLocation.ps1",
+        tags: ["Exchange", "Compliance", "Data Residency"]
+    },
+    {
+        name: "Get-Office365Endpoints.ps1",
+        description: "Downloads and parses Microsoft 365 IP/URL endpoints for firewall and proxy configuration.",
+        path: "scripts/Microsoft365/Get-Office365Endpoints.ps1",
+        tags: ["Network", "Firewall", "Endpoints"]
+    },
+    {
+        name: "Get-OneDriveUsageReport.ps1",
+        description: "Generates detailed usage report for OneDrive storage, activity, and sharing.",
+        path: "scripts/Microsoft365/Get-OneDriveUsageReport.ps1",
+        tags: ["OneDrive", "Reporting", "Storage"]
+    },
+    {
+        name: "Initialize-ActivityAlertSet.ps1",
+        description: "Creates a standardized set of Activity Alerts in Microsoft 365 Compliance Center.",
+        path: "scripts/Microsoft365/Initialize-ActivityAlertSet.ps1",
+        tags: ["Compliance", "Audit", "Security"]
+    },
+    {
+        name: "Initialize-ProtectionAlertSet.ps1",
+        description: "Deploys baseline Protection Alerts for threat detection in Microsoft 365.",
+        path: "scripts/Microsoft365/Initialize-ProtectionAlertSet.ps1",
+        tags: ["Security", "Threat Protection", "Compliance"]
+    },
+    {
+        name: "Invoke-GetAzureADAuditSignInLogs.ps1",
+        description: "Retrieves and filters Azure AD sign-in logs for auditing and investigation.",
+        path: "scripts/Microsoft365/Invoke-GetAzureADAuditSignInLogs.ps1",
+        tags: ["Audit", "Sign-in Logs", "Security"]
+    },
+    {
+        name: "LICENSE",
+        description: "License for Microsoft 365 script collection.",
+        path: "scripts/Microsoft365/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "ReplaceDomainForAllUnifiedGroups.ps1",
+        description: "Replaces primary domain for all Microsoft 365 Groups (Unified Groups) in bulk.",
+        path: "scripts/Microsoft365/ReplaceDomainForAllUnifiedGroups.ps1",
+        tags: ["Groups", "Migration", "Bulk Operation"]
+    },
+    {
+        name: "Set-AzureADNamingPolicyForOffice365Groups.ps1",
+        description: "Configures naming policy for Office 365 Groups to enforce naming standards.",
+        path: "scripts/Microsoft365/Set-AzureADNamingPolicyForOffice365Groups.ps1",
+        tags: ["Groups", "Policy", "Governance"]
+    },
+    {
+        name: "Set-MicrosoftNewWhiteboardOwner.ps1",
+        description: "Transfers ownership of Microsoft Whiteboard content to a new user or admin.",
+        path: "scripts/Microsoft365/Set-MicrosoftNewWhiteboardOwner.ps1",
+        tags: ["Whiteboard", "Ownership", "Remediation"]
+    },
+    {
+        name: "Set-Office365GroupMailAddress.ps1",
+        description: "Updates primary SMTP address for Office 365 Groups (Microsoft 365 Groups).",
+        path: "scripts/Microsoft365/Set-Office365GroupMailAddress.ps1",
+        tags: ["Groups", "Email", "Migration"]
+    },
+    {
+        name: "Set-bdcMsolMFAState.ps1",
+        description: "Enables or disables MFA for users in bulk using legacy MSOL module (for compatibility).",
+        path: "scripts/Microsoft365/Set-bdcMsolMFAState.ps1",
+        tags: ["Security", "MFA", "Legacy"]
+    },
+    {
+        name: "Setup-MSCommerceProductPolicies.ps1",
+        description: "Configures commerce policies for Microsoft 365 products (e.g., disable self-service purchase).",
+        path: "scripts/Microsoft365/Setup-MSCommerceProductPolicies.ps1",
+        tags: ["Commerce", "Governance", "Policy"]
+    },
+    {
+        name: "TweakSafeLinksPolicy.ps1",
+        description: "Modifies Safe Links policies for Microsoft Defender for Office 365.",
+        path: "scripts/Microsoft365/TweakSafeLinksPolicy.ps1",
+        tags: ["Security", "Safe Links", "Defender"]
+    },
+    {
+        name: "bootstrap-Office365Tenant.ps1",
+        description: "Bootstraps a new Microsoft 365 tenant with baseline policies, groups, and configurations.",
+        path: "scripts/Microsoft365/bootstrap-Office365Tenant.ps1",
+        tags: ["Deployment", "Automation", "Onboarding"]
+    }
+],
             
-            "Microsoft365": [
-                {
-                    name: "Get-M365ServiceHealth.ps1",
-                    description: "Rename to Microsoft365 — Gets Microsoft 365 service health status via Graph API.",
-                    path: "scripts/Microsoft365/Get-M365ServiceHealth.ps1",
-                    tags: ["Monitoring", "Beginner", "Graph API"]
-                }
-            ],
+          
+
+
+
+
+
             "MicrosoftTeams": [
                 {
                     name: "Invoke-BootstrapTeamsPoliciesForATenant.ps1",
@@ -2342,14 +2497,518 @@
                     tags: ["Teams", "Advanced", "Requires Admin"]
                 }
             ],
-            "Misc": [
-                {
-                    name: "Get-OneDriveSizeOnDisk.ps1",
-                    description: "Create Get-OneDriveSizeOnDisk.ps1 — Calculates size of OneDrive folder on local disk.",
-                    path: "scripts/Misc/Get-OneDriveSizeOnDisk.ps1",
-                    tags: ["Storage", "Beginner"]
-                }
-            ],
+           
+
+"Misc": [
+    {
+        name: "Check-ServiceMonitor.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Monitors critical Windows services and alerts on failure.",
+        path: "scripts/Misc/Check-ServiceMonitor.ps1",
+        tags: ["Monitoring", "Services", "Alerting"]
+    },
+    {
+        name: "Clear-EnAllEventLogs.ps1",
+        description: "Minor reworks — Clears all Windows Event Logs for troubleshooting or cleanup.",
+        path: "scripts/Misc/Clear-EnAllEventLogs.ps1",
+        tags: ["Logs", "Cleanup", "Troubleshooting"]
+    },
+    {
+        name: "Clear-EnAllEventLogs_TESTS.ps1",
+        description: "Minor reworks — Test suite for Clear-EnAllEventLogs script.",
+        path: "scripts/Misc/Clear-EnAllEventLogs_TESTS.ps1",
+        tags: ["Testing", "Logs", "Validation"]
+    },
+    {
+        name: "Clear-EnAllEventLogs_v2.ps1",
+        description: "Minor reworks — Enhanced version of event log clearing with filtering options.",
+        path: "scripts/Misc/Clear-EnAllEventLogs_v2.ps1",
+        tags: ["Logs", "Cleanup", "Advanced"]
+    },
+    {
+        name: "DisableDotNetTelemetry.ps1",
+        description: "Mitigate .NET Telemetry — Disables .NET runtime telemetry for privacy compliance.",
+        path: "scripts/Misc/DisableDotNetTelemetry.ps1",
+        tags: ["Privacy", ".NET", "Telemetry"]
+    },
+    {
+        name: "Enable-DNSOverHTTPS.ps1",
+        description: "Minor reworks — Enables DNS over HTTPS (DoH) on Windows for enhanced privacy.",
+        path: "scripts/Misc/Enable-DNSOverHTTPS.ps1",
+        tags: ["Network", "DNS", "Privacy"]
+    },
+    {
+        name: "Find-Log4jVulnerabilities.ps1",
+        description: "Minor reworks — Scans system for Log4j vulnerabilities (CVE-2021-44228).",
+        path: "scripts/Misc/Find-Log4jVulnerabilities.ps1",
+        tags: ["Security", "CVE", "Log4j"]
+    },
+    {
+        name: "ForceTimeResync.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Forces immediate time synchronization with NTP server.",
+        path: "scripts/Misc/ForceTimeResync.ps1",
+        tags: ["Time", "NTP", "Synchronization"]
+    },
+    {
+        name: "Get-AllCookiesFromWebRequestSession.ps1",
+        description: "Add Get-AllCookiesFromWebRequestSession.ps1 — Extracts all cookies from a PowerShell WebRequest session.",
+        path: "scripts/Misc/Get-AllCookiesFromWebRequestSession.ps1",
+        tags: ["Web", "Cookies", "Automation"]
+    },
+    {
+        name: "Get-BadFontPaths.ps1",
+        description: "Add Get-BadFontPaths — Identifies corrupted or invalid font paths in Windows registry.",
+        path: "scripts/Misc/Get-BadFontPaths.ps1",
+        tags: ["Fonts", "Registry", "Cleanup"]
+    },
+    {
+        name: "Get-DateIntervalHumanReadable.ps1",
+        description: "Update Get-DateIntervalHumanReadable.ps1 — Converts date intervals to human-readable format (e.g., '3 days ago').",
+        path: "scripts/Misc/Get-DateIntervalHumanReadable.ps1",
+        tags: ["Date", "Formatting", "Utility"]
+    },
+    {
+        name: "Get-DirectorySize.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Calculates total size of a directory including subdirectories.",
+        path: "scripts/Misc/Get-DirectorySize.ps1",
+        tags: ["Storage", "Disk", "Reporting"]
+    },
+    {
+        name: "Get-DotNetExecutableVersion.ps1",
+        description: "Get the version of the dotnet executable — Retrieves installed .NET SDK/Runtime versions.",
+        path: "scripts/Misc/Get-DotNetExecutableVersion.ps1",
+        tags: [".NET", "Version", "Discovery"]
+    },
+    {
+        name: "Get-FritzBoxEvents.ps1",
+        description: "Minor reworks — Retrieves event logs from AVM FritzBox routers via TR-064 API.",
+        path: "scripts/Misc/Get-FritzBoxEvents.ps1",
+        tags: ["Network", "FritzBox", "Automation"]
+    },
+    {
+        name: "Get-IPv6InWindows.ps1",
+        description: "Fixed the Typo in the Names — Gets IPv6 configuration status on Windows systems.",
+        path: "scripts/Misc/Get-IPv6InWindows.ps1",
+        tags: ["Network", "IPv6", "Discovery"]
+    },
+    {
+        name: "Get-IpInfo.ps1",
+        description: "Minor reworks — Retrieves detailed IP information including geolocation and ASN.",
+        path: "scripts/Misc/Get-IpInfo.ps1",
+        tags: ["Network", "IP", "Geolocation"]
+    },
+    {
+        name: "Get-LocalGroupMembership.ps1",
+        description: "Minor reworks — Lists all local group memberships for auditing purposes.",
+        path: "scripts/Misc/Get-LocalGroupMembership.ps1",
+        tags: ["Security", "Groups", "Audit"]
+    },
+    {
+        name: "Get-LocalIpAddresses.ps1",
+        description: "Minor reworks — Retrieves all local IP addresses including IPv4 and IPv6.",
+        path: "scripts/Misc/Get-LocalIpAddresses.ps1",
+        tags: ["Network", "IP", "Discovery"]
+    },
+    {
+        name: "Get-MyIpAddress.ps1",
+        description: "Get the external IP Address — Retrieves public IP address from external service.",
+        path: "scripts/Misc/Get-MyIpAddress.ps1",
+        tags: ["Network", "Public IP", "Utility"]
+    },
+    {
+        name: "Get-OneDriveSizeOnDisk.ps1",
+        description: "Create Get-OneDriveSizeOnDisk.ps1 — Calculates total size of OneDrive folder including hidden sync files.",
+        path: "scripts/Misc/Get-OneDriveSizeOnDisk.ps1",
+        tags: ["OneDrive", "Storage", "Reporting"]
+    },
+    {
+        name: "Get-OutdatedPowerShellModules.ps1",
+        description: "Create Get-OutdatedPowerShellModules.ps1 — Lists all outdated PowerShell modules from PSGallery.",
+        path: "scripts/Misc/Get-OutdatedPowerShellModules.ps1",
+        tags: ["PowerShell", "Modules", "Updates"]
+    },
+    {
+        name: "Get-RunAsAdmin.ps1",
+        description: "Add some minor tools — Checks if current PowerShell session is running as Administrator.",
+        path: "scripts/Misc/Get-RunAsAdmin.ps1",
+        tags: ["Security", "Elevation", "Utility"]
+    },
+    {
+        name: "Get-RunAsSystem.ps1",
+        description: "Add some minor tools — Checks if current process is running as SYSTEM account.",
+        path: "scripts/Misc/Get-RunAsSystem.ps1",
+        tags: ["Security", "SYSTEM", "Utility"]
+    },
+    {
+        name: "Get-WindowsBuildForMigrationSupport__SNIPPET.ps1",
+        description: "Create Get-WindowsBuildForMigrationSupport__SNIPPET.ps1 — Snippet to check Windows build compatibility for migration.",
+        path: "scripts/Misc/Get-WindowsBuildForMigrationSupport__SNIPPET.ps1",
+        tags: ["Windows", "Migration", "Compatibility"]
+    },
+    {
+        name: "Get-etLatestNuGetRelease.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Retrieves latest release version from NuGet package repository.",
+        path: "scripts/Misc/Get-etLatestNuGetRelease.ps1",
+        tags: ["NuGet", "Packages", "Discovery"]
+    },
+    {
+        name: "Grant-LogOnAsService.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Grants 'Log on as a service' right to specified account.",
+        path: "scripts/Misc/Grant-LogOnAsService.ps1",
+        tags: ["Security", "Privileges", "Service Accounts"]
+    },
+    {
+        name: "Hosts_helper.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Helper functions for managing Windows hosts file.",
+        path: "scripts/Misc/Hosts_helper.ps1",
+        tags: ["Network", "Hosts", "DNS"]
+    },
+    {
+        name: "Install-DSCResourceKit.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Installs PowerShell DSC Resource Kit modules.",
+        path: "scripts/Misc/Install-DSCResourceKit.ps1",
+        tags: ["DSC", "Modules", "Installation"]
+    },
+    {
+        name: "Install-SysInternalsSuite.ps1",
+        description: "Create Install-SysInternalsSuite.ps1 — Downloads and installs Microsoft SysInternals Suite.",
+        path: "scripts/Misc/Install-SysInternalsSuite.ps1",
+        tags: ["Tools", "SysInternals", "Installation"]
+    },
+    {
+        name: "Invoke-ApplyBasicTweakWindows11.ps1",
+        description: "Minor reworks — Applies basic performance and privacy tweaks to Windows 11.",
+        path: "scripts/Misc/Invoke-ApplyBasicTweakWindows11.ps1",
+        tags: ["Windows 11", "Optimization", "Tweaks"]
+    },
+    {
+        name: "Invoke-CVE202221907handling.ps1",
+        description: "Quick and dirty CVE-2022-21907 mitigation and reporting — Mitigates HTTP Protocol Stack RCE vulnerability.",
+        path: "scripts/Misc/Invoke-CVE202221907handling.ps1",
+        tags: ["Security", "CVE", "Mitigation"]
+    },
+    {
+        name: "Invoke-CheckPowerShellModules.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Validates installed PowerShell modules for integrity.",
+        path: "scripts/Misc/Invoke-CheckPowerShellModules.ps1",
+        tags: ["PowerShell", "Modules", "Validation"]
+    },
+    {
+        name: "Invoke-CleanupOldGalleryModuleVersions.ps1",
+        description: "Minor reworks — Cleans up old versions of PowerShell Gallery modules to save disk space.",
+        path: "scripts/Misc/Invoke-CleanupOldGalleryModuleVersions.ps1",
+        tags: ["PowerShell", "Modules", "Cleanup"]
+    },
+    {
+        name: "Invoke-CleanupTestVM.ps1",
+        description: "Create Invoke-CleanupTestVM.ps1 — Cleans up test virtual machines by removing temp files and resetting state.",
+        path: "scripts/Misc/Invoke-CleanupTestVM.ps1",
+        tags: ["VM", "Cleanup", "Automation"]
+    },
+    {
+        name: "Invoke-CloudFlareDDNSUpdate.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Updates CloudFlare DNS records for dynamic IP addresses.",
+        path: "scripts/Misc/Invoke-CloudFlareDDNSUpdate.ps1",
+        tags: ["Network", "DNS", "CloudFlare"]
+    },
+    {
+        name: "Invoke-DSCPerfReqConfigCheck.ps1",
+        description: "Minor reworks — Checks system for DSC performance requirements and configuration compliance.",
+        path: "scripts/Misc/Invoke-DSCPerfReqConfigCheck.ps1",
+        tags: ["DSC", "Performance", "Compliance"]
+    },
+    {
+        name: "Invoke-DotNetToolingUpgradeAll.ps1",
+        description: "Update all installed global dotNET Tools — Upgrades all globally installed .NET tools to latest versions.",
+        path: "scripts/Misc/Invoke-DotNetToolingUpgradeAll.ps1",
+        tags: [".NET", "Tools", "Updates"]
+    },
+    {
+        name: "Invoke-ExportDrivers.ps1",
+        description: "Export all Windows Drivers — Exports all installed drivers to a specified directory for backup.",
+        path: "scripts/Misc/Invoke-ExportDrivers.ps1",
+        tags: ["Drivers", "Backup", "Export"]
+    },
+    {
+        name: "Invoke-FritzBoxSmartHomePrototyping.ps1",
+        description: "Get FritzBox Smart Home information — Retrieves and controls FritzBox Smart Home devices.",
+        path: "scripts/Misc/Invoke-FritzBoxSmartHomePrototyping.ps1",
+        tags: ["IoT", "FritzBox", "Smart Home"]
+    },
+    {
+        name: "Invoke-InstallNewTeamsClientOnWindows365.ps1",
+        description: "Install the New Teams Client on Windows 365 VM — Automates installation of new Teams client on Cloud PCs.",
+        path: "scripts/Misc/Invoke-InstallNewTeamsClientOnWindows365.ps1",
+        tags: ["Teams", "Windows 365", "Deployment"]
+    },
+    {
+        name: "Invoke-InstallWindowsTerminalFromGitHub.ps1",
+        description: "Create Invoke-InstallWindowsTerminalFromGitHub.ps1 — Downloads and installs Windows Terminal from GitHub releases.",
+        path: "scripts/Misc/Invoke-InstallWindowsTerminalFromGitHub.ps1",
+        tags: ["Terminal", "Installation", "GitHub"]
+    },
+    {
+        name: "Invoke-KeepYouGreenInTheNewMicrosoftTeams.ps1",
+        description: "Create Invoke-KeepYouGreenInTheNewMicrosoftTeams.ps1 — Keeps user status green in new Microsoft Teams client.",
+        path: "scripts/Misc/Invoke-KeepYouGreenInTheNewMicrosoftTeams.ps1",
+        tags: ["Teams", "Presence", "Automation"]
+    },
+    {
+        name: "Invoke-MitigateCVE202230190.ps1",
+        description: "Apply the CVE-2022-30190 workaround as recommended by the MSRC — Mitigates MSDT URL Protocol vulnerability.",
+        path: "scripts/Misc/Invoke-MitigateCVE202230190.ps1",
+        tags: ["Security", "CVE", "Mitigation"]
+    },
+    {
+        name: "Invoke-PSReadlineHistoryHandler.ps1",
+        description: "Create Invoke-PSReadlineHistoryHandler.ps1 — Manages PowerShell PSReadLine history for cleanup or export.",
+        path: "scripts/Misc/Invoke-PSReadlineHistoryHandler.ps1",
+        tags: ["PowerShell", "History", "Utility"]
+    },
+    {
+        name: "Invoke-PSWindowsUpdateWrapper.ps1",
+        description: "Create Invoke-PSWindowsUpdateWrapper.ps1 — Wrapper script for Windows Update with logging and error handling.",
+        path: "scripts/Misc/Invoke-PSWindowsUpdateWrapper.ps1",
+        tags: ["Updates", "Windows", "Automation"]
+    },
+    {
+        name: "Invoke-SSHConnect.ps1",
+        description: "Create Invoke-SSHConnect.ps1 — Establishes SSH connections with common parameters and key handling.",
+        path: "scripts/Misc/Invoke-SSHConnect.ps1",
+        tags: ["SSH", "Network", "Automation"]
+    },
+    {
+        name: "Invoke-ScanForCVE20223602.ps1",
+        description: "Scan for CVE-2022-3602 vulnerable versions of OpenSSL — Identifies systems vulnerable to X.509 certificate RCE.",
+        path: "scripts/Misc/Invoke-ScanForCVE20223602.ps1",
+        tags: ["Security", "CVE", "OpenSSL"]
+    },
+    {
+        name: "Invoke-SetNetworkToPreferIPv4OverIPv6.ps1",
+        description: "Prioritising IPv4 over IPv6 on Windows — Adjusts network stack to prefer IPv4 for compatibility.",
+        path: "scripts/Misc/Invoke-SetNetworkToPreferIPv4OverIPv6.ps1",
+        tags: ["Network", "IPv4", "IPv6"]
+    },
+    {
+        name: "Invoke-ShrinkADSyncSqlDatabase.ps1",
+        description: "Create Invoke-ShrinkADSyncSqlDatabase.ps1 — Shrinks Azure AD Connect SQL database to reclaim disk space.",
+        path: "scripts/Misc/Invoke-ShrinkADSyncSqlDatabase.ps1",
+        tags: ["Azure AD", "SQL", "Maintenance"]
+    },
+    {
+        name: "Invoke-UpdateAllGalleryModules.ps1",
+        description: "Minor reworks — Updates all PowerShell modules installed from PowerShell Gallery.",
+        path: "scripts/Misc/Invoke-UpdateAllGalleryModules.ps1",
+        tags: ["PowerShell", "Modules", "Updates"]
+    },
+    {
+        name: "Invoke-Windows11HardwareReadinessCheck.ps1",
+        description: "Update Invoke-Windows11HardwareReadinessCheck.ps1 — Checks hardware compatibility for Windows 11 upgrade.",
+        path: "scripts/Misc/Invoke-Windows11HardwareReadinessCheck.ps1",
+        tags: ["Windows 11", "Hardware", "Compatibility"]
+    },
+    {
+        name: "Invoke-dotNETNativeImageGeneratorRecompile.ps1",
+        description: "Create Invoke-dotNETNativeImageGeneratorRecompile.ps1 — Recompiles .NET native images for performance optimization.",
+        path: "scripts/Misc/Invoke-dotNETNativeImageGeneratorRecompile.ps1",
+        tags: [".NET", "Performance", "Optimization"]
+    },
+    {
+        name: "LICENSE",
+        description: "Minor reworks — License file for Misc script collection.",
+        path: "scripts/Misc/LICENSE",
+        tags: ["Legal", "License"]
+    },
+    {
+        name: "New-ComputerCheckpoint.ps1",
+        description: "Create New-ComputerCheckpoint.ps1 — Creates system restore point with custom description.",
+        path: "scripts/Misc/New-ComputerCheckpoint.ps1",
+        tags: ["System", "Restore", "Backup"]
+    },
+    {
+        name: "Optimize-MicrosoftDefenderExclusions.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Optimizes Microsoft Defender exclusions for performance.",
+        path: "scripts/Misc/Optimize-MicrosoftDefenderExclusions.ps1",
+        tags: ["Security", "Defender", "Performance"]
+    },
+    {
+        name: "Optimize-MicrosoftDefenderExclusionsForMicrosoftTeams.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Adds Teams-specific exclusions to Microsoft Defender.",
+        path: "scripts/Misc/Optimize-MicrosoftDefenderExclusionsForMicrosoftTeams.ps1",
+        tags: ["Security", "Defender", "Teams"]
+    },
+    {
+        name: "Out-ZipArchive.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Creates ZIP archives from files or directories.",
+        path: "scripts/Misc/Out-ZipArchive.ps1",
+        tags: ["Compression", "ZIP", "Utility"]
+    },
+    {
+        name: "PowerShell_PSTypeNames_and_custom_FormatData.ps1",
+        description: "Minor reworks — Demonstrates custom PSTypeNames and FormatData for PowerShell objects.",
+        path: "scripts/Misc/PowerShell_PSTypeNames_and_custom_FormatData.ps1",
+        tags: ["PowerShell", "Formatting", "Advanced"]
+    },
+    {
+        name: "Publish-BitbucketDownload.ps1",
+        description: "Minor reworks — Publishes files to Bitbucket downloads section via API.",
+        path: "scripts/Misc/Publish-BitbucketDownload.ps1",
+        tags: ["Bitbucket", "CI/CD", "Publishing"]
+    },
+    {
+        name: "Remove-FileEndingBlankLines.ps1",
+        description: "Minor reworks — Removes trailing blank lines from text files for cleaner version control.",
+        path: "scripts/Misc/Remove-FileEndingBlankLines.ps1",
+        tags: ["Files", "Cleanup", "Text Processing"]
+    },
+    {
+        name: "Remove-SendToOneNoteLnk.ps1",
+        description: "Create Remove-SendToOneNoteLnk.ps1 — Removes 'Send to OneNote' shortcut from SendTo menu.",
+        path: "scripts/Misc/Remove-SendToOneNoteLnk.ps1",
+        tags: ["OneNote", "Cleanup", "UX"]
+    },
+    {
+        name: "Remove-Signature.ps1",
+        description: "Minor reworks — Removes digital signatures from PowerShell scripts or executables.",
+        path: "scripts/Misc/Remove-Signature.ps1",
+        tags: ["Security", "Signing", "Utility"]
+    },
+    {
+        name: "Resolve-DNSHost.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Resolves hostnames to IP addresses with detailed output.",
+        path: "scripts/Misc/Resolve-DNSHost.ps1",
+        tags: ["Network", "DNS", "Resolution"]
+    },
+    {
+        name: "Set-AllowPingAndRemoteDesktop.ps1",
+        description: "Minor reworks — Configures Windows Firewall to allow Ping and Remote Desktop.",
+        path: "scripts/Misc/Set-AllowPingAndRemoteDesktop.ps1",
+        tags: ["Network", "Firewall", "Remote Access"]
+    },
+    {
+        name: "Set-ChromeDefaultPreferences.ps1",
+        description: "Minor reworks — Sets default preferences for Google Chrome via master_preferences file.",
+        path: "scripts/Misc/Set-ChromeDefaultPreferences.ps1",
+        tags: ["Chrome", "Configuration", "Deployment"]
+    },
+    {
+        name: "Set-DesktopBackGroundColor.ps1",
+        description: "Create Set-DesktopBackGroundColor.ps1 — Sets solid color desktop background without images.",
+        path: "scripts/Misc/Set-DesktopBackGroundColor.ps1",
+        tags: ["Desktop", "UX", "Customization"]
+    },
+    {
+        name: "Set-DisplayBrightness.ps1",
+        description: "Change brightness with PowerShell script without third-party software — Adjusts screen brightness via WMI.",
+        path: "scripts/Misc/Set-DisplayBrightness.ps1",
+        tags: ["Display", "Hardware", "WMI"]
+    },
+    {
+        name: "Set-IPv6InWindows.ps1",
+        description: "Fixed the Typo in the Names — Configures IPv6 settings on Windows systems.",
+        path: "scripts/Misc/Set-IPv6InWindows.ps1",
+        tags: ["Network", "IPv6", "Configuration"]
+    },
+    {
+        name: "Set-PowerPlanToAuto.ps1",
+        description: "Minor reworks — Sets Windows power plan to 'Balanced' (Auto) for optimal performance/power.",
+        path: "scripts/Misc/Set-PowerPlanToAuto.ps1",
+        tags: ["Power", "Performance", "Configuration"]
+    },
+    {
+        name: "Set-PowerPlanToHighPerformance.ps1",
+        description: "Minor reworks — Sets Windows power plan to 'High Performance' for maximum performance.",
+        path: "scripts/Misc/Set-PowerPlanToHighPerformance.ps1",
+        tags: ["Power", "Performance", "Configuration"]
+    },
+    {
+        name: "Set-PreventOutlookIndexing.ps1",
+        description: "Minor reworks — Prevents Outlook from indexing to improve performance on low-end systems.",
+        path: "scripts/Misc/Set-PreventOutlookIndexing.ps1",
+        tags: ["Outlook", "Performance", "Optimization"]
+    },
+    {
+        name: "Set-PublishUserActivities.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Configures Windows to publish or hide user activities.",
+        path: "scripts/Misc/Set-PublishUserActivities.ps1",
+        tags: ["Privacy", "Activity", "Configuration"]
+    },
+    {
+        name: "Subscribe-LogonLogoffEvents.ps1",
+        description: "Create Subscribe-LogonLogoffEvents.ps1 — Subscribes to Windows logon/logoff events for auditing.",
+        path: "scripts/Misc/Subscribe-LogonLogoffEvents.ps1",
+        tags: ["Audit", "Events", "Security"]
+    },
+    {
+        name: "Test-IsAdmin.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Tests if current user has Administrator privileges.",
+        path: "scripts/Misc/Test-IsAdmin.ps1",
+        tags: ["Security", "Elevation", "Utility"]
+    },
+    {
+        name: "Test-Port.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Tests if a TCP/UDP port is open on a remote host.",
+        path: "scripts/Misc/Test-Port.ps1",
+        tags: ["Network", "Ports", "Testing"]
+    },
+    {
+        name: "Test-ValidEmail.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Validates email address format using regex.",
+        path: "scripts/Misc/Test-ValidEmail.ps1",
+        tags: ["Email", "Validation", "Utility"]
+    },
+    {
+        name: "Transfer_PSGallery_Installed_Modules.ps1",
+        description: "Minor reworks — Transfers installed PowerShell Gallery modules to another machine.",
+        path: "scripts/Misc/Transfer_PSGallery_Installed_Modules.ps1",
+        tags: ["PowerShell", "Modules", "Migration"]
+    },
+    {
+        name: "Tweak_UDPforFastSend.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Tweaks UDP stack for faster send performance.",
+        path: "scripts/Misc/Tweak_UDPforFastSend.ps1",
+        tags: ["Network", "UDP", "Performance"]
+    },
+    {
+        name: "UnixTimeStampTools.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Converts between Unix timestamps and DateTime objects.",
+        path: "scripts/Misc/UnixTimeStampTools.ps1",
+        tags: ["Date", "Time", "Conversion"]
+    },
+    {
+        name: "Update-BootWIM.ps1",
+        description: "Update WinPE/boot image/boot.wim — Updates Windows PE boot image with latest drivers and patches.",
+        path: "scripts/Misc/Update-BootWIM.ps1",
+        tags: ["Windows PE", "Boot", "Deployment"]
+    },
+    {
+        name: "Update-ModuleFromPSGallery.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Updates specific PowerShell module from PSGallery.",
+        path: "scripts/Misc/Update-ModuleFromPSGallery.ps1",
+        tags: ["PowerShell", "Modules", "Updates"]
+    },
+    {
+        name: "invoke-CPUWorkload.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Generates CPU workload for testing or benchmarking.",
+        path: "scripts/Misc/invoke-CPUWorkload.ps1",
+        tags: ["Performance", "CPU", "Testing"]
+    },
+    {
+        name: "invoke-GetDSCResources.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Retrieves all available DSC resources on the system.",
+        path: "scripts/Misc/invoke-GetDSCResources.ps1",
+        tags: ["DSC", "Resources", "Discovery"]
+    },
+    {
+        name: "invoke-ModuleMaint.ps1",
+        description: "Spring cleaning: Fix some Naming issues — Performs maintenance tasks on PowerShell modules.",
+        path: "scripts/Misc/invoke-ModuleMaint.ps1",
+        tags: ["PowerShell", "Modules", "Maintenance"]
+    }
+],
+
+
+
+
             "Office_Related": [
                 {
                     name: "Optimize-OfficeInstall.ps1",
@@ -2383,13 +3042,55 @@
                 }
             ],
             "Windows11": [
-                {
-                    name: "Invoke-NativeImageGeneratorTool.ps1",
-                    description: "Create Invoke-NativeImageGeneratorTool.ps1 — Runs Windows 11 native image generator for performance.",
-                    path: "scripts/Windows11/Invoke-NativeImageGeneratorTool.ps1",
-                    tags: ["Performance", "Advanced", "Requires Admin"]
-                }
-            ],
+    {
+        name: "Invoke-ForceRemoveMicrosoft365AppAndOneNote.ps1",
+        description: "Remove all Microsoft 365 Apps and OneNote Apps — Cleans unwanted Office components from Windows 11.",
+        path: "scripts/Windows11/Invoke-ForceRemoveMicrosoft365AppAndOneNote.ps1",
+        tags: ["Cleanup", "Office", "Uninstall"]
+    },
+    {
+        name: "Invoke-GetComputerRestorePoint.ps1",
+        description: "Get the existing restore points and show only the required info — Simplified system restore point viewer.",
+        path: "scripts/Windows11/Invoke-GetComputerRestorePoint.ps1",
+        tags: ["System", "Restore", "Reporting"]
+    },
+    {
+        name: "Invoke-NativeImageGeneratorTool.ps1",
+        description: "Create Invoke-NativeImageGeneratorTool.ps1 — Optimizes Windows 11 startup by pre-compiling .NET assemblies.",
+        path: "scripts/Windows11/Invoke-NativeImageGeneratorTool.ps1",
+        tags: ["Performance", "Optimization", "Boot Time"]
+    },
+    {
+        name: "Invoke-RemoveBitLockerGroupPolicySettings.ps1",
+        description: "Remove the Group Policy settings for BitLocker from the registry — Resets BitLocker policy to default state.",
+        path: "scripts/Windows11/Invoke-RemoveBitLockerGroupPolicySettings.ps1",
+        tags: ["Security", "BitLocker", "Registry"]
+    },
+    {
+        name: "Invoke-RemoveUnwantedApps.ps1",
+        description: "Remove a few apps we don't like to have installed any longer — Uninstalls bloatware and undesired pre-installed apps.",
+        path: "scripts/Windows11/Invoke-RemoveUnwantedApps.ps1",
+        tags: ["Cleanup", "Bloatware", "Uninstall"]
+    },
+    {
+        name: "Invoke-SetNetworkToPreferIPv4OverIPv6.ps1",
+        description: "Prioritising IPv4 over IPv6 on Windows — Adjusts network stack to prefer IPv4 for compatibility.",
+        path: "scripts/Windows11/Invoke-SetNetworkToPreferIPv4OverIPv6.ps1",
+        tags: ["Network", "IPv4", "IPv6"]
+    },
+    {
+        name: "Set-DisplayBrightness.ps1",
+        description: "Change brightness with PowerShell script without third-party software — Adjusts screen brightness via WMI.",
+        path: "scripts/Windows11/Set-DisplayBrightness.ps1",
+        tags: ["Display", "Hardware", "WMI"]
+    },
+    {
+        name: "Set-WiFiRandomMacState.ps1",
+        description: "Configures random MAC address behavior for Wi-Fi adapters on Windows 11 — Enhances privacy on public networks.",
+        path: "scripts/Windows11/Set-WiFiRandomMacState.ps1",
+        tags: ["Network", "Privacy", "Wi-Fi"]
+    }
+],
             "bdc.MtrTooling": [
                 {
                     name: "Deploy-MTRConfiguration.ps1",
