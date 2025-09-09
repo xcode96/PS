@@ -44,7 +44,7 @@ Perfect for internal documentation, team sharing, or public GitHub repositories.
 
 ## 📸 Screenshot
 
-![PowerShell Script Vault Screenshot](https://via.placeholder.com/1200x600/1e1e1e/ffffff?text=PowerShell+Script+Vault+-+Dark+Theme+UI)
+![PowerShell Script Vault Screenshot](https://raw.githubusercontent.com/xcode96/PS/main/Screenshot%20(1).png)
 
 > 💡 *Replace this placeholder with actual screenshot of your vault*
 
